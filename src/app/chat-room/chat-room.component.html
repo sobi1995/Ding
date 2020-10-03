@@ -33,8 +33,8 @@
             <button type="submit" class="send" [disabled]="!messageForm.valid" ></button>
         </div>
     </form>
-
-    <div class="modal" *ngIf="disConected">
+  <div>
+    <div class="modal" *ngIf="!Conected">
       <div class="modal-content">
         <div class="modal-header">
           <label>نام کاربری خود را وارد کنید</label>
@@ -54,19 +54,24 @@
           <label>توضیحات بیشتر</label>
         </div>
     </div>
-
-    <!-- <div class="modal" *ngIf="Loader">
+  </div>
+  
+  <div>
+    <div class="modal" *ngIf="ShowLoader">
       <div class="modal-content">
         <div class="modal-header">
           <label>در حال ارتباط با کاربر دیگر</label>
         </div>
         <div class="modal-body">       
-                     <div class="col-md-12 form-group">
-                 </div>  
+          <div class="col-md-12 text-center" >
+            <img src="../assets/loader.gif" class="img-loader">
+          </div>  
         </div>
     
         <div class="modal-footer">
           <label>توضیحات بیشتر</label>
         </div>
-    </div> -->
+    </div>
+  </div>
+
 </div>

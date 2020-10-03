@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-chat-room',
@@ -43,12 +44,11 @@ export class ChatRoomComponent implements OnInit {
   }
 
   UserName='';
-  disConected=true;
-  Loader=false
+  Conected=false;
+  ShowLoader=false
   Login():void{
     const data = this.UserName
-    console.log(data)
-      this.Loader=true
-      this.disConected=false
+      this.Conected=true
+      this.ShowLoader=true
   }
 }
