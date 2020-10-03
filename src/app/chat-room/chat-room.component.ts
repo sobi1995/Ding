@@ -37,4 +37,18 @@ export class ChatRoomComponent implements OnInit {
     this._hubConnection.invoke('SendMessage', data);
     this.messages.push(data);
   }
+  scroll(){
+    let myDiv = document.querySelector("#scroll")
+    myDiv.scrollIntoView()
+  }
+
+  UserName='';
+  disConected=true;
+  Loader=false
+  Login():void{
+    const data = this.UserName
+    console.log(data)
+      this.Loader=true
+      this.disConected=false
+  }
 }

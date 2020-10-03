@@ -5,7 +5,7 @@
     <div class="default-nav">
       <div class="main-nav">
         <div class="toggle"></div>
-        <div class="main-nav-item"><a class="main-nav-item-link" href="#">Blake</a></div>
+        <div class="main-nav-item"><a class="main-nav-item-link" (click)="scroll()"> hi {{UserName}}</a></div>
         <div class="options"></div>
       </div>
     </div>
@@ -15,22 +15,58 @@
     <div class="content" id="content">
         <div class="message-wrapper me">
             <div class="circle-wrapper animated bounceIn"></div>
-            <div class="text-wrapper animated fadeIn">rfref</div>
+            <div class="text-wrapper animated fadeIn"></div>
           </div>
 
         <div *ngFor="let message of messages; let i = index" class="message-wrapper them">
             <div class="circle-wrapper animated bounceIn"></div>
             <div class="text-wrapper animated fadeIn">{{message}}</div>
-          </div>
-
+            
+        </div>
+        <div id="scroll" ></div> 
     </div>
   </div>
     <form class="form-inline" (ngSubmit)="sendMessage()" #messageForm="ngForm">
 
         <div class="bottom" id="bottom">
             <textarea type="text" class="input" id="input" placeholder="your message..." name="message" [(ngModel)]="message" required></textarea>
-            <button type="submit" class="send" [disabled]="!messageForm.valid"></button>
-
+            <button type="submit" class="send" [disabled]="!messageForm.valid" ></button>
         </div>
     </form>
+
+    <div class="modal" *ngIf="disConected">
+      <div class="modal-content">
+        <div class="modal-header">
+          <label>نام کاربری خود را وارد کنید</label>
+        </div>
+        <div class="modal-body">       
+                     <div class="col-md-12 form-group">
+          <form class="form-inline" (ngSubmit)="Login()" #UserNameForm="ngForm">
+            <input autocomplete="off" type="text" name="UserName" id="UserName" class="form-control w-100 User-Name-Input" [(ngModel)]="UserName" required dir="rtl" placeholder="نام خود را وارد کنید ...">   
+    
+              <button class="btn btn-dark btn-block" [disabled]="!UserNameForm.valid">ورود</button>
+                <button type="button" class="btn btn-danger btn-block">ثبت نام کاربر</button>
+              </form>     
+                 </div>  
+        </div>
+    
+        <div class="modal-footer">
+          <label>توضیحات بیشتر</label>
+        </div>
+    </div>
+
+    <!-- <div class="modal" *ngIf="Loader">
+      <div class="modal-content">
+        <div class="modal-header">
+          <label>در حال ارتباط با کاربر دیگر</label>
+        </div>
+        <div class="modal-body">       
+                     <div class="col-md-12 form-group">
+                 </div>  
+        </div>
+    
+        <div class="modal-footer">
+          <label>توضیحات بیشتر</label>
+        </div>
+    </div> -->
 </div>
