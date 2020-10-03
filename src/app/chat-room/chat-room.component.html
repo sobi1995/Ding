@@ -11,7 +11,7 @@
     </div>
   </nav>
   <div class="inner" id="inner">
-      
+
     <div class="content" id="content">
         <div class="message-wrapper me">
             <div class="circle-wrapper animated bounceIn"></div>
@@ -21,9 +21,9 @@
         <div *ngFor="let message of messages; let i = index" class="message-wrapper them">
             <div class="circle-wrapper animated bounceIn"></div>
             <div class="text-wrapper animated fadeIn">{{message}}</div>
-            
+
         </div>
-        <div id="scroll" ></div> 
+        <div id="scroll" ></div>
     </div>
   </div>
     <form class="form-inline" (ngSubmit)="sendMessage()" #messageForm="ngForm">
@@ -39,35 +39,35 @@
         <div class="modal-header">
           <label>نام کاربری خود را وارد کنید</label>
         </div>
-        <div class="modal-body">       
+        <div class="modal-body">
                      <div class="col-md-12 form-group">
           <form class="form-inline" (ngSubmit)="Login()" #UserNameForm="ngForm">
-            <input autocomplete="off" type="text" name="UserName" id="UserName" class="form-control w-100 User-Name-Input" [(ngModel)]="UserName" required dir="rtl" placeholder="نام خود را وارد کنید ...">   
-    
-              <button class="btn btn-dark btn-block" [disabled]="!UserNameForm.valid">ورود</button>
+            <input autocomplete="off" type="text" name="UserName" id="UserName" class="form-control w-100 User-Name-Input" [(ngModel)]="UserName" required dir="rtl" placeholder="نام خود را وارد کنید ...">
+
+              <button class="btn btn-dark btn-block" (click)="StartSocket()" [disabled]="!UserNameForm.valid">ورود</button>
                 <button type="button" class="btn btn-danger btn-block">ثبت نام کاربر</button>
-              </form>     
-                 </div>  
+              </form>
+                 </div>
         </div>
-    
+
         <div class="modal-footer">
           <label>توضیحات بیشتر</label>
         </div>
     </div>
   </div>
-  
+
   <div>
     <div class="modal" *ngIf="ShowLoader">
       <div class="modal-content">
         <div class="modal-header">
           <label>در حال ارتباط با کاربر دیگر</label>
         </div>
-        <div class="modal-body">       
+        <div class="modal-body">
           <div class="col-md-12 text-center" >
             <img src="../assets/loader.gif" class="img-loader">
-          </div>  
+          </div>
         </div>
-    
+
         <div class="modal-footer">
           <label>توضیحات بیشتر</label>
         </div>

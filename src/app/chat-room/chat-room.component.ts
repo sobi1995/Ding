@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+
 import { timer } from 'rxjs';
 
 @Component({
@@ -12,24 +13,15 @@ export class ChatRoomComponent implements OnInit {
   message = '';
   messages: string[] = [];
 
+  UserName='';
+  Conected=false;
+  ShowLoader=false
+
   title = ' SignarlR';
 
+
   ngOnInit() {
-    this._hubConnection = new HubConnectionBuilder().withUrl('https://localhost:44300/chathub')
-                            .build();
 
-    this._hubConnection.on('ReceiveMessage', (data: any) => {
-        const received = `Received: ${data}`;
-        this.messages.push(received);
-    });
-
-    this._hubConnection.start()
-        .then(() => {
-            console.log('Hub connection started');
-        })
-        .catch(err => {
-            console.log('Error while establishing connection');
-        });
   }
 
   public sendMessage(): void {
@@ -43,12 +35,34 @@ export class ChatRoomComponent implements OnInit {
     myDiv.scrollIntoView()
   }
 
-  UserName='';
-  Conected=false;
-  ShowLoader=false
+
   Login():void{
     const data = this.UserName
       this.Conected=true
       this.ShowLoader=true
+  }
+
+
+  StartSocket(){
+
+    this._hubConnection = new HubConnectionBuilder().withUrl('https://localhost:44300/chathub')
+                            .build();
+
+    this._hubConnection.on('ReceiveMessage', (data: any) => {
+
+
+       this.ShowLoader=data.status==0 ? true:false;
+        const received = `Received: ${data}`;
+        this.messages.push(received);
+    });
+
+    this._hubConnection.start()
+        .then(() => {
+            console.log('Hub connection started');
+        })
+        .catch(err => {
+            console.log('Error while establishing connection');
+        });
+
   }
 }
