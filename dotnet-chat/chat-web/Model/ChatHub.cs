@@ -10,12 +10,13 @@ namespace chatweb.Model
     public class ChatHub : Hub
     {
         private static readonly ConcurrentDictionary<string, UserSocket> Users = new ConcurrentDictionary<string, UserSocket>();
+        private static readonly ConcurrentDictionary<string, UserSocket> Room = new ConcurrentDictionary<string, UserSocket>();
         private static object _lock = new object();
 
-        public async Task SendMessage(string message)
-        {
-            await Clients.All.SendAsync("ReceiveMessage", message);
-        }
+        //public async Task SendMessage(string message)
+        //{
+        //    await Clients.All.SendAsync("ReceiveMessage", message);
+        //}
         public void Send(SendMessage message)
         {
             //message.read = 0;
@@ -42,13 +43,24 @@ namespace chatweb.Model
             //    }
         }
 
-        public void SendSpecialUser(string[] conationsids,string message) {
+        public void SendSpecialUserAllConations(string[] conationsids, string message)
+        {
             foreach (var conationsid in conationsids)
             {
 
                 Clients.Client(conationsid).SendAsync("SendSpecialUser", message);
             }
-
+        }
+        public void SendSpecialUser(string conationsid, Message message)
+        {
+                Clients.Client(conationsid).SendAsync("ReceiveMessage", message);  
+        }
+        public void FoundUserAndCreateChat()
+        {
+          if (Users.Keys.Count<=1)
+            {
+                SendSpecialUser(Context.ConnectionId, new Message()  {Msg=null,Status=Status.Waiting});
+            }
 
         }
 
@@ -67,27 +79,21 @@ namespace chatweb.Model
             {
                 user.ConnectionIds.Add(connectionId);
             }
+
+            FoundUserAndCreateChat();
             return base.OnConnectedAsync();
         }
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
-
-
             DeleteUser(Context.ConnectionId);
-
-
             return base.OnDisconnectedAsync(exception);
         }
 
         private async void DeleteUser(string connectionId)
         {
-
-
             var keysToRemove = Users.Keys.Where(key => key == connectionId).ToList();
             keysToRemove.ForEach(key => Users.TryRemove(key, out UserSocket obj));
-
-
         }
         public HashSet<string> GetConnection(string username)
         {
@@ -124,7 +130,8 @@ namespace chatweb.Model
     {
 
         Chating = 1,
-        Waiting = 0
+        Waiting = 0,
+        NoneOnline=3
     }
     public class UserConnectionSignalR
     {
@@ -140,6 +147,23 @@ namespace chatweb.Model
         public string message { get; set; }
         public int sessionchat { get; set; }
         public int read { get; set; }
+    }
+
+    public class Message
+    {
+        public string Msg { get; set; }
+        public Status Status { get; set; }
+        public DateTime Date { get; set; }
+        public Message()
+        {
+            Date = DateTime.Now;
+        }
+    }
+
+    public class Room {
+        public string UserId1 { get; set; }
+        public string UserId2 { get; set; }
+
     }
 
 }
