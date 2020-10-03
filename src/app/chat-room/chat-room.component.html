@@ -1,0 +1,36 @@
+
+<h1 class="title">Material Design Chat</h1>
+<div class="wrapper">
+  <nav class="nav" id="nav">
+    <div class="default-nav">
+      <div class="main-nav">
+        <div class="toggle"></div>
+        <div class="main-nav-item"><a class="main-nav-item-link" href="#">Blake</a></div>
+        <div class="options"></div>
+      </div>
+    </div>
+  </nav>
+  <div class="inner" id="inner">
+      
+    <div class="content" id="content">
+        <div class="message-wrapper me">
+            <div class="circle-wrapper animated bounceIn"></div>
+            <div class="text-wrapper animated fadeIn">rfref</div>
+          </div>
+
+        <div *ngFor="let message of messages; let i = index" class="message-wrapper them">
+            <div class="circle-wrapper animated bounceIn"></div>
+            <div class="text-wrapper animated fadeIn">{{message}}</div>
+          </div>
+
+    </div>
+  </div>
+    <form class="form-inline" (ngSubmit)="sendMessage()" #messageForm="ngForm">
+
+        <div class="bottom" id="bottom">
+            <textarea type="text" class="input" id="input" placeholder="your message..." name="message" [(ngModel)]="message" required></textarea>
+            <button type="submit" class="send" [disabled]="!messageForm.valid"></button>
+
+        </div>
+    </form>
+</div>
