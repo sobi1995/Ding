@@ -54,7 +54,7 @@ export class ChatRoomComponent implements OnInit {
     this.message ="goodbye" ;
     this.sendMessage(6);
     this.reloadpage()
-    this.StartSocket()
+    setTimeout(() => { this.StartSocket()}, 5000);
   }
 public reloadpage(){
   this._hubConnection.stop();
@@ -108,6 +108,5 @@ public reloadpage(){
       .catch(err => {
         console.log('Error while establishing connection');
       });
-
   }
 }
