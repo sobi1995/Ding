@@ -33,7 +33,7 @@ export class ChatRoomComponent implements OnInit {
    const message={
     GroupName : this.GroupName,
     Status:statusCode,
-    Message :this.message 
+    Message :this.message
    }
 
     this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
@@ -96,7 +96,7 @@ public reloadpage(){
             setTimeout(() => { this.isTypeing=false }, 3000);
           }
           else if (data.status === 6) {
-            this.reloadpage() 
+            this.reloadpage()
             setTimeout(() => { this.StartSocket()}, 3000);
           }else if (data.status === 7) {
 this.CountOnlineUsers=data.msg 
