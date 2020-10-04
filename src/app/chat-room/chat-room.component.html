@@ -9,6 +9,8 @@
           <a class="main-nav-item-link" (click)="scroll()"> hi {{UserName}}
             &nbsp;
         <span *ngIf="isTypeing">istypeing...</span>
+        &nbsp;
+        <button class="btn btn-light" (click)="disconect()">Next</button>
       </a>
         </div>
         <div class="options"></div>
@@ -16,7 +18,7 @@
     </div>
   </nav>
   <div class="inner" id="inner">
-
+    
     <div class="content" id="content">
       <div *ngFor="let msg of messages; let i = index">
         <div class="message-wrapper me" *ngIf="msg.type==true">

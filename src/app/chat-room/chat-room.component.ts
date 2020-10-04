@@ -25,7 +25,6 @@ export class ChatRoomComponent implements OnInit {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.StartSocket();
-    
   }
 
   public sendMessage(statusCode : number): void {
@@ -51,22 +50,28 @@ export class ChatRoomComponent implements OnInit {
     myDiv.scrollIntoView();
   }
 
-  // public disconect() {
-  //   const message={
-  //     GroupName : this.GroupName,
-  //     Status:6,
-  //     Message :"goodbye" 
-  //    }
-  
-  //   this._hubConnection.stop();
-  //   this.ShowLoader=true
-  //   this.StartSocket();
-  // }
+  public disconect() {
+    this.message ="goodbye" ;
+    this.sendMessage(6);
+    this.reloadpage()
+    this.StartSocket()
+  }
+public reloadpage(){
+  this._hubConnection.stop();
+  this.message = '';
+  this.messages=[];
+  this.GroupName='';
+  this. UserName = '';
+  this.Conected = true;
+  this.ShowLoader = true;
+  this.isTypeing=false
+}
 
   Login(): void {
     const data = this.UserName;
     this.Conected = true;
     this.ShowLoader = true;
+    this.StartSocket()
   }
 
   // tslint:disable-next-line:typedef
@@ -89,6 +94,10 @@ export class ChatRoomComponent implements OnInit {
           else if (data.status === 5) {
             this.isTypeing=true
             setTimeout(() => { this.isTypeing=false }, 3000);
+          }
+          else if (data.status === 6) {
+            this.reloadpage() 
+            setTimeout(() => { this.StartSocket()}, 3000);
           }
             });
 
