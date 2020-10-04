@@ -39,7 +39,7 @@ namespace chatweb.Model
         }
         public Task SedndMessageGroupExceptCurentUser( string groupname,  string message)
         {
-            return Clients.GroupExcept(groupname, Context.ConnectionId).SendAsync("ReceiveMessage", new Message() { GroupName});
+            return Clients.GroupExcept(groupname, Context.ConnectionId).SendAsync("ReceiveMessage", new MessageGroup() {Status=Status.Chating,Message=message });
         }
         public Task SedndMessageGroup( string groupname, Message message)
         {
@@ -134,7 +134,8 @@ namespace chatweb.Model
         Chating = 1,
         Waiting = 0,
         NoneOnline=3,
-        FoundUser=4
+        FoundUser=4,
+        IsTyping
     }
 
 
