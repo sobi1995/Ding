@@ -1,4 +1,3 @@
-
 <h1 class="title">Material Design Chat</h1>
 <div class="wrapper">
   <nav class="nav" id="nav">
@@ -6,42 +5,54 @@
       <div class="main-nav">
         <div class="toggle"></div>
         <div class="main-nav-item">
-          <a class="main-nav-item-link" (click)="scroll()"> hi {{UserName}}
+          <a class="main-nav-item-link" (click)="scroll()">
+            hi {{ UserName }}
             &nbsp;
-        <span *ngIf="isTypeing">istypeing...</span>
-        &nbsp;
-        <button class="btn btn-light" (click)="disconect()">Next</button>
-      </a>
+            <span *ngIf="isTypeing">istypeing...</span>
+            &nbsp;
+            <button class="btn btn-light" (click)="disconect()">Next</button>
+          </a>
         </div>
         <div class="options"></div>
       </div>
     </div>
   </nav>
   <div class="inner" id="inner">
-    
     <div class="content" id="content">
       <div *ngFor="let msg of messages; let i = index">
-        <div class="message-wrapper me" *ngIf="msg.type==true">
-            <div class="circle-wrapper animated bounceIn"></div>
-            <div class="text-wrapper animated fadeIn">{{msg.message}}</div>
-          </div>
+        <div class="message-wrapper me" *ngIf="msg.type == true">
+          <div class="circle-wrapper animated bounceIn"></div>
+          <div class="text-wrapper animated fadeIn">{{ msg.message }}</div>
+        </div>
 
-        <div  class="message-wrapper them" *ngIf="msg.type==false" >
-            <div class="circle-wrapper animated bounceIn"></div>
-            <div class="text-wrapper animated fadeIn">{{msg.message}}</div>
-
+        <div class="message-wrapper them" *ngIf="msg.type == false">
+          <div class="circle-wrapper animated bounceIn"></div>
+          <div class="text-wrapper animated fadeIn">{{ msg.message }}</div>
         </div>
       </div>
-        <div id="scroll" ></div>
+      <div id="scroll"></div>
     </div>
   </div>
-    <form class="form-inline" (ngSubmit)="sendMessage(1)" #messageForm="ngForm">
-
-        <div class="bottom" id="bottom">
-            <textarea type="text" (keyup)="sendMessage(5)" class="input" id="input" placeholder="your message..." name="message" [(ngModel)]="message" required></textarea>
-            <button type="submit" class="send" [disabled]="!messageForm.valid" ></button>
-        </div>
-    </form>
+  <form class="form-inline" (ngSubmit)="sendMessage(1)" #messageForm="ngForm">
+    <div class="bottom" id="bottom">
+      <textarea
+        type="text"
+        (keyup)="sendMessage(5)"
+        class="input"
+        dir="rtl"
+        id="input"
+        placeholder="متن پیام خود را بنویسید ..."
+        name="message"
+        [(ngModel)]="message"
+        required
+      ></textarea>
+      <button
+        type="submit"
+        class="send"
+        [disabled]="!messageForm.valid"
+      ></button>
+    </div>
+  </form>
   <div>
     <div class="modal" *ngIf="!Conected">
       <div class="modal-content">
@@ -49,38 +60,61 @@
           <label>نام کاربری خود را وارد کنید</label>
         </div>
         <div class="modal-body">
-                     <div class="col-md-12 form-group">
-          <form class="form-inline" (ngSubmit)="Login()" #UserNameForm="ngForm">
-            <input autocomplete="off" type="text" name="UserName" id="UserName" class="form-control w-100 User-Name-Input" [(ngModel)]="UserName" required dir="rtl" placeholder="نام خود را وارد کنید ...">
+          <div class="col-md-12 form-group">
+            <form
+              class="form-inline"
+              (ngSubmit)="Login()"
+              #UserNameForm="ngForm"
+            >
+              <input
+                autocomplete="off"
+                type="text"
+                name="UserName"
+                id="UserName"
+                class="form-control w-100 User-Name-Input"
+                [(ngModel)]="UserName"
+                required
+                dir="rtl"
+                placeholder="نام خود را وارد کنید ..."
+              />
 
-              <button class="btn btn-dark btn-block" (click)="StartSocket()" [disabled]="!UserNameForm.valid">ورود</button>
-                <button type="button" class="btn btn-danger btn-block">ثبت نام کاربر</button>
-              </form>
-                 </div>
+              <button
+                class="btn btn-dark btn-block"
+                (click)="StartSocket()"
+                [disabled]="!UserNameForm.valid"
+              >
+                ورود
+              </button>
+              <button type="button" class="btn btn-danger btn-block">
+                ثبت نام کاربر
+              </button>
+            </form>
+          </div>
         </div>
 
         <div class="modal-footer">
           <label>توضیحات بیشتر</label>
         </div>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <div class="modal" *ngIf="ShowLoader">
-      <div class="modal-content">
-        <div class="modal-header">
-          <label>در حال ارتباط با کاربر دیگر</label>
-        </div>
-        <div class="modal-body">
-          <div class="col-md-12 text-center" >
-            <img src="../assets/loader.gif" class="img-loader">
+    <div>
+      <div class="modal" *ngIf="ShowLoader">
+        <div class="modal-content">
+          <div class="modal-header">
+            <label>در حال ارتباط با کاربر دیگر</label>
+          </div>
+          <div class="modal-body">
+            <div class="col-md-12 text-center">
+              <img src="../assets/loader.gif" class="img-loader" />
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <label>{{ CountOnlineUsers }} : تعداد کاربران آنلاین </label>
           </div>
         </div>
-
-        <div class="modal-footer">
-          <label>{{CountOnlineUsers}} : تعداد کاربران آنلاین  </label>
-        </div>
+      </div>
     </div>
   </div>
-
 </div>
