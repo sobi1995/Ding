@@ -26,6 +26,7 @@ export class ChatRoomComponent implements OnInit {
     this.StartSocket();
   }
 
+<<<<<<< HEAD
   public sendMessage(statusCode: number): void {
     if (this.message.length > 0) {
       const data = `Me : ${this.message}`;
@@ -34,6 +35,16 @@ export class ChatRoomComponent implements OnInit {
         Status: statusCode,
         Message: this.message,
       };
+=======
+  public sendMessage(statusCode : number): void {
+   if (this.message.length >0) {
+    const data = `Me : ${this.message}`;
+   const message={
+    GroupName : this.GroupName,
+    Status:statusCode,
+    Message :this.message
+   }
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
 
       this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
       console.log(this.messages);
@@ -89,6 +100,7 @@ export class ChatRoomComponent implements OnInit {
       if (data.status === 4) {
         this.ShowLoader = false;
         this.GroupName = data.groupName;
+<<<<<<< HEAD
       } else if (data.status === 1) {
         const received = `Received: ${data}`;
         this.AddMessageToList(data.message, false);
@@ -108,6 +120,26 @@ export class ChatRoomComponent implements OnInit {
         console.log(data);
       }
     });
+=======
+          }
+          else if (data.status === 1) {
+            const received = `Received: ${data}`;
+            this.messages.push({message : data.message, type : false});
+            console.log(this.messages);
+          }
+          else if (data.status === 5) {
+            this.isTypeing=true
+            setTimeout(() => { this.isTypeing=false }, 3000);
+          }
+          else if (data.status === 6) {
+            this.reloadpage()
+            setTimeout(() => { this.StartSocket()}, 3000);
+          }else if (data.status === 7) {
+this.CountOnlineUsers=data.msg 
+console.log(data)
+         }
+            });
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
 
     this._hubConnection
       .start()
