@@ -29,8 +29,12 @@ export class ChatRoomComponent implements OnInit {
 
   public sendMessage(): void {
     const data = `Me : ${this.message}`;
-
-    this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', this.GroupName, this.message);
+   const message={
+    GroupName : this.GroupName,
+    Status:1,
+    Message :this.message 
+   }
+    this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
     this.messages.push({message : this.message, type : true});
     console.log(this.messages);
     this.message='';
