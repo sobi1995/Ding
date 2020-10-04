@@ -37,9 +37,9 @@ namespace chatweb.Model
           
                 Clients.Client(conationsid).SendAsync("ReceiveMessage", message);  
         }
-        public Task SedndMessageGroupExceptCurentUser( string groupname,  string message)
+        public Task SedndMessageGroupExceptCurentUser(MessageGroup message)
         {
-            return Clients.GroupExcept(groupname, Context.ConnectionId).SendAsync("ReceiveMessage", new MessageGroup() {Status=Status.Chating,Message=message });
+            return Clients.GroupExcept(message.GroupName, Context.ConnectionId).SendAsync("ReceiveMessage", message);
         }
         public Task SedndMessageGroup( string groupname, Message message)
         {
@@ -135,7 +135,7 @@ namespace chatweb.Model
         Waiting = 0,
         NoneOnline=3,
         FoundUser=4,
-        IsTyping
+        IsTyping=5
     }
 
 
@@ -171,7 +171,7 @@ namespace chatweb.Model
         public string Message { get; set; }
         public DateTime Date { get; set; }
         public Status Status { get; set; }
-
+        public string GroupName { get; set; }
 
     }
 
