@@ -14,10 +14,10 @@ namespace chatweb.Model
         public byte MaxMemberOfGroup { get; set; }
 
 
-        //public async Task SendMessage(string message)
-        //{
-        //    await Clients.All.SendAsync("ReceiveMessage", message);
-        //}
+        public async Task SendMessageAllUser(Message message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", message);
+        }
         public ChatHub()
         {
             MaxMemberOfGroup = 2;
@@ -56,7 +56,11 @@ namespace chatweb.Model
          
             if (user.Key!=null)
             {
-                var groupName = Context.ConnectionId + user.Value.ConnectionIds.FirstOrDefault();
+                var usesr = Users.Where(x => x.Value.ConnectionIds.Any(c => c == Context.ConnectionId)).FirstOrDefault();
+
+                Users[user.Key].IsChating = true;
+                Users[usesr.Key].IsChating = true;
+              var groupName = Context.ConnectionId + user.Value.ConnectionIds.FirstOrDefault();
                 JoinGroup(Context.ConnectionId, groupName);
                 JoinGroup(user.Value.ConnectionIds.FirstOrDefault(), groupName);
 
@@ -83,12 +87,14 @@ namespace chatweb.Model
             }
 
             FoundUserAndCreateChat();
+            SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
             return base.OnConnectedAsync();
         }
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
             DeleteUser(Context.ConnectionId);
+            SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
             return base.OnDisconnectedAsync(exception);
         }
 
@@ -135,7 +141,8 @@ namespace chatweb.Model
         Waiting = 0,
         NoneOnline=3,
         FoundUser=4,
-        IsTyping=5
+        IsTyping=5 ,
+         OnlineUser=7
     }
 
 
@@ -145,15 +152,7 @@ namespace chatweb.Model
         public string Name { get; set; }
         public HashSet<string> ConnectionIds { get; set; }
     }
-    public class SendMessage
-    {
-        public int id { get; set; }
-        public int users { get; set; }
-        public int userr { get; set; }
-        public string message { get; set; }
-        public int sessionchat { get; set; }
-        public int read { get; set; }
-    }
+  
 
     public class Message
     {
