@@ -33,12 +33,9 @@ export class ChatRoomComponent implements OnInit {
     const data = `Me : ${this.message}`;
    const message={
     GroupName : this.GroupName,
-    Status:1,
+    Status:statusCode,
     Message :this.message 
    }
-   if (statusCode ===5) {
-      message.Status=5;
-  }
 
     this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
     console.log(this.messages);
