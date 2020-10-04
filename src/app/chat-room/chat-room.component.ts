@@ -18,7 +18,7 @@ export class ChatRoomComponent implements OnInit {
   UserName = '';
   Conected = true;
   ShowLoader = true;
-
+  isTypeing=false
   title = ' SignarlR';
 
 
@@ -27,17 +27,25 @@ export class ChatRoomComponent implements OnInit {
     this.StartSocket();
   }
 
-  public sendMessage(): void {
+  public sendMessage(statusCode : number): void {
+   if (this.message.length >0) {
     const data = `Me : ${this.message}`;
    const message={
     GroupName : this.GroupName,
     Status:1,
     Message :this.message 
    }
+   if (statusCode ===5) {
+      message.Status=5;
+  }
+
     this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
-    this.messages.push({message : this.message, type : true});
     console.log(this.messages);
-    this.message='';
+    if (statusCode !=5) {
+      this.messages.push({message : this.message, type : true});
+      this.message='';
+    }
+  }
   }
   // tslint:disable-next-line:typedef
   scroll() {
@@ -45,13 +53,11 @@ export class ChatRoomComponent implements OnInit {
     myDiv.scrollIntoView();
   }
 
-
   Login(): void {
     const data = this.UserName;
     this.Conected = true;
     this.ShowLoader = true;
   }
-
 
   // tslint:disable-next-line:typedef
   StartSocket() {
@@ -60,21 +66,22 @@ export class ChatRoomComponent implements OnInit {
       .build();
 
     this._hubConnection.on('ReceiveMessage', (data: any) => {
-
       console.log(data);
 
       if (data.status === 4) {
         this.ShowLoader = false;
         this.GroupName = data.groupName;
           }
-
-     else if (data.status === 1) {
-        const received = `Received: ${data}`;
-        this.messages.push({message : data.message, type : false});
-        console.log(this.messages);
-
-      }
-    });
+          else if (data.status === 1) {
+            const received = `Received: ${data}`;
+            this.messages.push({message : data.message, type : false});
+            console.log(this.messages);
+          }
+          else if (data.status === 5) {
+            this.isTypeing=true
+            setTimeout(() => { this.isTypeing=false }, 3000);
+          }
+            });
 
     this._hubConnection.start()
       .then(() => {

@@ -5,7 +5,12 @@
     <div class="default-nav">
       <div class="main-nav">
         <div class="toggle"></div>
-        <div class="main-nav-item"><a class="main-nav-item-link" (click)="scroll()"> hi {{UserName}}</a></div>
+        <div class="main-nav-item">
+          <a class="main-nav-item-link" (click)="scroll()"> hi {{UserName}}
+            &nbsp;
+        <span *ngIf="isTypeing">istypeing...</span>
+      </a>
+        </div>
         <div class="options"></div>
       </div>
     </div>
@@ -31,7 +36,7 @@
     <form class="form-inline" (ngSubmit)="sendMessage()" #messageForm="ngForm">
 
         <div class="bottom" id="bottom">
-            <textarea type="text" class="input" id="input" placeholder="your message..." name="message" [(ngModel)]="message" required></textarea>
+            <textarea type="text" (keyup)="sendMessage(5)" class="input" id="input" placeholder="your message..." name="message" [(ngModel)]="message" required></textarea>
             <button type="submit" class="send" [disabled]="!messageForm.valid" ></button>
         </div>
     </form>
