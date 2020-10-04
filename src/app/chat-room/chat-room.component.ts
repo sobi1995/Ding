@@ -18,8 +18,8 @@ export class ChatRoomComponent implements OnInit {
   UserName = '';
   Conected = true;
   ShowLoader = true;
-  isTypeing=false
-  title = ' SignarlR';
+  isTypeing=false;
+  CountOnlineUsers=0;  
 
 
   // tslint:disable-next-line:typedef
@@ -98,7 +98,10 @@ public reloadpage(){
           else if (data.status === 6) {
             this.reloadpage() 
             setTimeout(() => { this.StartSocket()}, 3000);
-          }
+          }else if (data.status === 7) {
+this.CountOnlineUsers=data.msg 
+console.log(data)
+         }
             });
 
     this._hubConnection.start()
