@@ -1,0 +1,99 @@
+{
+<<<<<<< HEAD
+  "name": "Ding",
+  "short_name": "Ding",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "Ding",
+=======
+  "name": "angular-chat",
+  "short_name": "angular-chat",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-72x72.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-96x96.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-128x128.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-144x144.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-152x152.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-192x192.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-384x384.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+<<<<<<< HEAD
+      "src": "assets/favicon.png",
+=======
+      "src": "assets/icons/icon-512x512.png",
+>>>>>>> cd4c19fb982e94efabac628162e694e9374d1b18
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}
