@@ -47,13 +47,19 @@ namespace WebApplication1
             {
                 app.UseDeveloperExceptionPage();
             }
-
+ 
             app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
+            app.UseStaticFiles();
+            app.UseDefaultFiles(new DefaultFilesOptions
+            {
+                DefaultFileNames = new
+     List<string> { "index.html" }
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
