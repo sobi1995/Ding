@@ -18,6 +18,12 @@ namespace chatweb.Model
         {
             await Clients.All.SendAsync("ReceiveMessage", message);
         }
+        public async Task DeleteRoom(string ConnectionId, string room)
+        {
+            await SedndMessageGroup(room, new Message() { GroupName = room, Status = Status.DisConnect, Msg = "Left user" });
+            await Groups.RemoveFromGroupAsync(ConnectionId, room);
+        }
+
         public ChatHub()
         {
             MaxMemberOfGroup = 2;
@@ -34,37 +40,43 @@ namespace chatweb.Model
         public void SendSpecialUser(string conationsid, Message message)
         {
 
-          
-                Clients.Client(conationsid).SendAsync("ReceiveMessage", message);  
+
+            Clients.Client(conationsid).SendAsync("ReceiveMessage", message);
         }
         public Task SedndMessageGroupExceptCurentUser(MessageGroup message)
         {
             return Clients.GroupExcept(message.GroupName, Context.ConnectionId).SendAsync("ReceiveMessage", message);
         }
-        public Task SedndMessageGroup( string groupname, Message message)
+
+
+        public Task SedndMessageGroup(string groupname, Message message)
         {
             return Clients.Group(groupname).SendAsync("ReceiveMessage", message);
         }
-        public  Task JoinGroup(string conationsid, string group)
+        public Task JoinGroup(string conationsid, string group)
         {
+
             return Groups.AddToGroupAsync(conationsid, group);
         }
         public void FoundUserAndCreateChat()
         {
-            var user = Users.Where(x => x.Value.IsChating == false && x.Value.ConnectionIds.Any(x=> x!= Context.ConnectionId)).FirstOrDefault();
+            var user = Users.Where(x => x.Value.IsChating == false && x.Value.ConnectionIds.Any(x => x != Context.ConnectionId)).FirstOrDefault();
 
-         
-            if (user.Key!=null)
+
+            if (user.Key != null)
             {
                 var usesr = Users.Where(x => x.Value.ConnectionIds.Any(c => c == Context.ConnectionId)).FirstOrDefault();
 
                 Users[user.Key].IsChating = true;
                 Users[usesr.Key].IsChating = true;
-              var groupName = Context.ConnectionId + user.Value.ConnectionIds.FirstOrDefault();
+                var groupName = Context.ConnectionId + user.Value.ConnectionIds.FirstOrDefault();
+                Users[user.Key].GroupName = groupName;
+                Users[usesr.Key].GroupName = groupName;
+
                 JoinGroup(Context.ConnectionId, groupName);
                 JoinGroup(user.Value.ConnectionIds.FirstOrDefault(), groupName);
 
-                SedndMessageGroup(groupName, new Message() { Msg="The User Is Found",Status=Status.FoundUser,GroupName= groupName });
+                SedndMessageGroup(groupName, new Message() { Msg = "The User Is Found", Status = Status.FoundUser, GroupName = groupName });
             }
 
         }
@@ -79,7 +91,7 @@ namespace chatweb.Model
                 {
                     Name = connectionId,
                     ConnectionIds = new HashSet<string>(),
-                    IsChating=false
+                    IsChating = false
                 });
             lock (user.ConnectionIds)
             {
@@ -93,8 +105,10 @@ namespace chatweb.Model
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
-            DeleteUser(Context.ConnectionId);
+
+            DeleteRoom(Context.ConnectionId, Users[Context.ConnectionId.ToString()].GroupName);
             SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
+
             return base.OnDisconnectedAsync(exception);
         }
 
@@ -103,18 +117,7 @@ namespace chatweb.Model
             var keysToRemove = Users.Keys.Where(key => key == connectionId).ToList();
             keysToRemove.ForEach(key => Users.TryRemove(key, out UserSocket obj));
         }
-        public HashSet<string> GetConnection(string username)
-        {
-            //!!!!!!!the must fix
-            UserSocket Con = new UserSocket();
 
-            if (Users.TryGetValue(username, out Con) == false)
-                return null;
-            else
-                return Con.ConnectionIds;
-            //return Users.GetValueOrDefault(username).ConnectionIds;
-
-        }
 
     }
 
@@ -125,6 +128,7 @@ namespace chatweb.Model
         public string Name { get; set; }
         public bool IsChating { get; set; }
         public HashSet<string> ConnectionIds { get; set; }
+        public string GroupName { get; set; }
     }
 
 
@@ -139,10 +143,11 @@ namespace chatweb.Model
 
         Chating = 1,
         Waiting = 0,
-        NoneOnline=3,
-        FoundUser=4,
-        IsTyping=5 ,
-         OnlineUser=7
+        NoneOnline = 3,
+        FoundUser = 4,
+        IsTyping = 5,
+        OnlineUser = 7,
+        DisConnect = 6
     }
 
 
@@ -152,7 +157,7 @@ namespace chatweb.Model
         public string Name { get; set; }
         public HashSet<string> ConnectionIds { get; set; }
     }
-  
+
 
     public class Message
     {
@@ -166,7 +171,8 @@ namespace chatweb.Model
         }
     }
 
-    public class MessageGroup {
+    public class MessageGroup
+    {
         public string Message { get; set; }
         public DateTime Date { get; set; }
         public Status Status { get; set; }
