@@ -10,7 +10,7 @@
             &nbsp;
             <span *ngIf="isTypeing">istypeing...</span>
             &nbsp;
-            <button class="btn btn-light" (click)="disconect()">Next</button>
+            <button [disabled]='ShowLoader' class="btn btn-light" (click)="disconect()">Next</button>
           </a>
         </div>
         <div class="options"></div>
