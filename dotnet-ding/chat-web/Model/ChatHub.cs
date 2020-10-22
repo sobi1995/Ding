@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -10,7 +11,12 @@ namespace chatweb.Model
     public class ChatHub : Hub
     {
         private static readonly ConcurrentDictionary<string, UserSocket> Users = new ConcurrentDictionary<string, UserSocket>();
+        private readonly ILogger<ChatHub> _logger;
 
+        public ChatHub(ILogger<ChatHub> logger)
+        {
+            this._logger = logger;
+        }
         public byte MaxMemberOfGroup { get; set; }
 
 
@@ -45,6 +51,7 @@ namespace chatweb.Model
         }
         public Task SedndMessageGroupExceptCurentUser(MessageGroup message)
         {
+            this._logger.LogInformation(message.Message);
             return Clients.GroupExcept(message.GroupName, Context.ConnectionId).SendAsync("ReceiveMessage", message);
         }
 
@@ -105,8 +112,9 @@ namespace chatweb.Model
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
-
-            DeleteRoom(Context.ConnectionId, Users[Context.ConnectionId.ToString()].GroupName);
+        
+            DeleteRoom(Context.ConnectionId, Users[Context.ConnectionId.ToString()].GroupName);  
+            DeleteUser(Context.ConnectionId);
             SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
 
             return base.OnDisconnectedAsync(exception);
