@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
-
 import { timer } from 'rxjs';
 
 @Component({
@@ -36,7 +35,6 @@ export class ChatRoomComponent implements OnInit {
    }
 
       this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
-      console.log(this.messages);
       if (statusCode != 5) {
         this.AddMessageToList(this.message, true);
         this.message = '';
@@ -44,10 +42,6 @@ export class ChatRoomComponent implements OnInit {
     }
   }
   // tslint:disable-next-line:typedef
-  scroll() {
-    const myDiv = document.querySelector('#scroll');
-    myDiv.scrollIntoView();
-  }
 
   public disconect() {
     this.message = 'goodbye';
@@ -85,7 +79,6 @@ export class ChatRoomComponent implements OnInit {
       .build();
 
     this._hubConnection.on('ReceiveMessage', (data: any) => {
-      console.log(data);
       if (data.status === 4) {
         this.ShowLoader = false;
         this.GroupName = data.groupName;
@@ -93,7 +86,6 @@ export class ChatRoomComponent implements OnInit {
           else if (data.status === 1) {
             const received = `Received: ${data}`;
             this.messages.push({message : data.message, type : false});
-            console.log(this.messages);
           }
           else if (data.status === 5) {
             this.isTypeing=true
@@ -103,8 +95,7 @@ export class ChatRoomComponent implements OnInit {
             this.reloadpage()
             setTimeout(() => { this.StartSocket()}, 3000);
           }else if (data.status === 7) {
-this.CountOnlineUsers=data.msg 
-console.log(data)
+            this.CountOnlineUsers=data.msg 
          }
             });
 
@@ -116,5 +107,10 @@ console.log(data)
       .catch((err) => {
         console.log('Error while establishing connection');
       });
+  }
+  public scrollToBottom() {
+    console.log(document.querySelector('#content').clientHeight)
+    const myDiv = document.querySelector('#scroll');
+    myDiv.scrollIntoView();
   }
 }

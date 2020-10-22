@@ -5,9 +5,7 @@
         <div class="toggle"></div>
         <div class="main-nav-item">
             &nbsp;
-            <span >istypeing...</span>
-
-            <!-- *ngIf="isTypeing" -->
+            <span *ngIf="isTypeing">is typeing...</span>
                     </div>
         <div class="options">
           <button [disabled]='ShowLoader' class="btn btn-primary btn-refresh" (click)="disconect()"></button>
@@ -16,7 +14,9 @@
     </div>
   </nav>
   <div class="inner" id="inner">
-    <div class="content" id="content">
+    <div class="content" id="content" >
+      <button (click)=scrollToBottom()>sss</button>
+
       <div *ngFor="let msg of messages; let i = index">
         <div class="message-wrapper me" *ngIf="msg.type == true">
           <div class="circle-wrapper animated bounceIn"></div>
@@ -33,7 +33,7 @@
   </div>
   <form class="form-inline" (ngSubmit)="sendMessage(1)" #messageForm="ngForm">
     <div class="bottom" id="bottom">
-      <textarea
+      <input
         type="text"
         (keyup)="sendMessage(5)"
         class="input"
@@ -43,11 +43,12 @@
         name="message"
         [(ngModel)]="message"
         required
-      ></textarea>
+      />
       <button
         type="submit"
         class="send"
         [disabled]="!messageForm.valid"
+        onclick="document.getElementById('input').focus()"
       ></button>
     </div>
   </form>
