@@ -19,12 +19,16 @@
 
       <div *ngFor="let msg of messages; let i = index">
         <div class="message-wrapper me" *ngIf="msg.type == true">
-          <div class="circle-wrapper animated bounceIn"></div>
+          <div class="circle-wrapper animated bounceIn">
+            <img src="../assets/ProfilePicture/MyDefultProfilePicture.png" class="ProfilePicture"/>
+          </div>
           <div class="text-wrapper animated fadeIn">{{ msg.message }}</div>
         </div>
 
         <div class="message-wrapper them" *ngIf="msg.type == false">
-          <div class="circle-wrapper animated bounceIn"></div>
+          <div class="circle-wrapper animated bounceIn">
+            <img src="../assets/ProfilePicture/SercretProfilePictuer.png" class="ProfilePicture"/>
+          </div>
           <div class="text-wrapper animated fadeIn">{{ msg.message }}</div>
         </div>
       </div>
@@ -42,14 +46,20 @@
         placeholder="متن پیام خود را بنویسید ..."
         name="message"
         [(ngModel)]="message"
+        autocomplete="off"
         required
       />
       <button
         type="submit"
-        class="send"
-        [disabled]="!messageForm.valid"
+        class="send ImgSubmit" 
+        [hidden]="!messageForm.valid"
         onclick="document.getElementById('input').focus()"
       ></button>
+      <a
+      class="send ImgEmoji"
+      [hidden]="messageForm.valid"
+    ></a>
+
     </div>
   </form>
   <div>

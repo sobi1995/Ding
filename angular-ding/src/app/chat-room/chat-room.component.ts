@@ -82,6 +82,8 @@ export class ChatRoomComponent implements OnInit {
       if (data.status === 4) {
         this.ShowLoader = false;
         this.GroupName = data.groupName;
+        var audio = new Audio('../assets/Song/Ding1.mp3');
+        audio.play();
           }
           else if (data.status === 1) {
             const received = `Received: ${data}`;
