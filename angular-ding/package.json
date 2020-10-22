@@ -22,6 +22,7 @@
     "@angular/service-worker": "~10.0.5",
     "@aspnet/signalr": "^1.1.4",
     "http-server": "^0.12.3",
+    "ngx-device-detector": "^2.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

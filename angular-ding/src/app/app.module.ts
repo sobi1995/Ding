@@ -6,16 +6,18 @@ import { NgModule } from '@angular/core';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import { WebPlatformComponent } from './web-platform/web-platform.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatRoomComponent
+    ChatRoomComponent,
+    WebPlatformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+ 
     FormsModule,
 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
