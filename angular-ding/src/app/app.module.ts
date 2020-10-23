@@ -7,6 +7,7 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { WebPlatformComponent } from './web-platform/web-platform.component';
+import { AngularResizedEventModule } from 'angular-resize-event';
  
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { WebPlatformComponent } from './web-platform/web-platform.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
- 
+    AngularResizedEventModule,
     FormsModule,
 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

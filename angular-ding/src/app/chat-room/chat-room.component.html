@@ -14,9 +14,8 @@
     </div>
   </nav>
   <div class="inner" id="inner">
-    <div class="content" id="content" >
-      <button (click)=scrollToBottom()>sss</button>
-
+    <div class="content" id="content" (resized)="onResized($event)"  >
+ 
       <div *ngFor="let msg of messages; let i = index">
         <div class="message-wrapper me" *ngIf="msg.type == true">
           <div class="circle-wrapper animated bounceIn">

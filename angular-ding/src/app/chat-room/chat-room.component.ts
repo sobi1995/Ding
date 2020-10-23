@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { ResizedEvent } from 'angular-resize-event';
 import { timer } from 'rxjs';
 
 @Component({
@@ -115,4 +116,9 @@ export class ChatRoomComponent implements OnInit {
     const myDiv = document.querySelector('#scroll');
     myDiv.scrollIntoView();
   }
+
+  onResized(event: ResizedEvent) {
+this.scrollToBottom();
+  }
+
 }
