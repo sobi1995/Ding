@@ -54,59 +54,15 @@
         [hidden]="!messageForm.valid"
         onclick="document.getElementById('input').focus()"
       ></button>
-      <a
-      class="send ImgEmoji"
-      [hidden]="messageForm.valid"
-    ></a>
 
+      <span class="send ImgEmoji BtnSendEmoji" [hidden]="messageForm.valid" >
+        <div class="ListEmojis" onfocus="console.log('ssss')">
+        <img src="../assets/ImgTools/Call.gif" class="toolsIcon"/>
+        </div>
+      </span>
     </div>
   </form>
   <div>
-    <div class="modal" *ngIf="!Conected">
-      <div class="modal-content">
-        <div class="modal-header">
-          <label>نام کاربری خود را وارد کنید</label>
-        </div>
-        <div class="modal-body">
-          <div class="col-md-12 form-group">
-            <form
-              class="form-inline"
-              (ngSubmit)="Login()"
-              #UserNameForm="ngForm"
-            >
-              <input
-                autocomplete="off"
-                type="text"
-                name="UserName"
-                id="UserName"
-                class="form-control w-100 User-Name-Input"
-                [(ngModel)]="UserName"
-                required
-                dir="rtl"
-                placeholder="نام خود را وارد کنید ..."
-              />
-
-              <button
-                class="btn btn-dark btn-block"
-                (click)="StartSocket()"
-                [disabled]="!UserNameForm.valid"
-              >
-                ورود
-              </button>
-              <button type="button" class="btn btn-danger btn-block">
-                ثبت نام کاربر
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <label>توضیحات بیشتر</label>
-        </div>
-      </div>
-    </div>
-
-    <div>
       <div class="modal" *ngIf="ShowLoader">
         <div class="modal-content">
           <div class="modal-header">
@@ -125,4 +81,3 @@
       </div>
     </div>
   </div>
-</div>
