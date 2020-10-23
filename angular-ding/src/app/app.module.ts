@@ -8,6 +8,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { WebPlatformComponent } from './web-platform/web-platform.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
+import { PushNotificationsModule } from 'ng-push-ivy';
+ 
  
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { AngularResizedEventModule } from 'angular-resize-event';
     AppRoutingModule,
     AngularResizedEventModule,
     FormsModule,
-
+    PushNotificationsModule ,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

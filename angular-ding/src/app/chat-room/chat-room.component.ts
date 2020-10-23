@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ResizedEvent } from 'angular-resize-event';
+import { PushNotificationsService } from 'ng-push-ivy';
+ 
 import { timer } from 'rxjs';
 
 @Component({
@@ -10,30 +12,42 @@ import { timer } from 'rxjs';
 })
 export class ChatRoomComponent implements OnInit {
   // tslint:disable-next-line:variable-name
+
+
   private _hubConnection: HubConnection;
   message = '';
   messages: any = [];
-
+  IsPushNotifications = false;
   GroupName: '';
   UserName = '';
   Conected = true;
   ShowLoader = true;
   isTypeing = false;
   CountOnlineUsers = 0;
+  constructor(private _pushNotifications: PushNotificationsService) {
+    var _self = this;
+    this._pushNotifications.requestPermission();
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden)
+        _self.IsPushNotifications = true;
+      else
+        _self.IsPushNotifications = false;
+    });
 
+  }
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.StartSocket();
   }
 
-  public sendMessage(statusCode : number): void {
-   if (this.message.length >0) {
-    const data = `Me : ${this.message}`;
-   const message={
-    GroupName : this.GroupName,
-    Status:statusCode,
-    Message :this.message
-   }
+  public sendMessage(statusCode: number): void {
+    if (this.message.length > 0) {
+      const data = `Me : ${this.message}`;
+      const message = {
+        GroupName: this.GroupName,
+        Status: statusCode,
+        Message: this.message
+      }
 
       this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
       if (statusCode != 5) {
@@ -85,22 +99,24 @@ export class ChatRoomComponent implements OnInit {
         this.GroupName = data.groupName;
         var audio = new Audio('../assets/Song/Ding1.mp3');
         audio.play();
-          }
-          else if (data.status === 1) {
-            const received = `Received: ${data}`;
-            this.messages.push({message : data.message, type : false});
-          }
-          else if (data.status === 5) {
-            this.isTypeing=true
-            setTimeout(() => { this.isTypeing=false }, 3000);
-          }
-          else if (data.status === 6) {
-            this.reloadpage()
-            setTimeout(() => { this.StartSocket()}, 3000);
-          }else if (data.status === 7) {
-            this.CountOnlineUsers=data.msg 
-         }
-            });
+      }
+      else if (data.status === 1) {
+        const received = `Received: ${data}`;
+        this.messages.push({ message: data.message, type: false });
+        if(this.IsPushNotifications==true)
+        this.notify(data.message)
+      }
+      else if (data.status === 5) {
+        this.isTypeing = true
+        setTimeout(() => { this.isTypeing = false }, 3000);
+      }
+      else if (data.status === 6) {
+        this.reloadpage()
+        setTimeout(() => { this.StartSocket() }, 3000);
+      } else if (data.status === 7) {
+        this.CountOnlineUsers = data.msg
+      }
+    });
 
     this._hubConnection
       .start()
@@ -118,7 +134,17 @@ export class ChatRoomComponent implements OnInit {
   }
 
   onResized(event: ResizedEvent) {
-this.scrollToBottom();
+    this.scrollToBottom();
   }
 
+  notify(body) { //our function to be called on click
+    let options = { //set options
+      body: body,
+      icon: "./assets/favicon.png" //adding an icon
+    }
+    this._pushNotifications.create('Iron Man', options).subscribe( //creates a notification
+      res => console.log(res),
+      err => console.log(err)
+    );
+  }
 }
