@@ -9,13 +9,15 @@ import { environment } from '../environments/environment';
 import { WebPlatformComponent } from './web-platform/web-platform.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { PushNotificationsModule } from 'ng-push-ivy';
+import { HomeComponent } from './home/home.component';
  
  
 @NgModule({
   declarations: [
     AppComponent,
     ChatRoomComponent,
-    WebPlatformComponent
+    WebPlatformComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
