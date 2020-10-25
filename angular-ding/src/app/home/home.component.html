@@ -1,4 +1,3 @@
-
       <div class="page">
         <div class="box hero back11">
         <img [ngStyle]="{'opacity':slideIndex==1 ? 1 : 0 }" class="mySlides" src="https://www.w3schools.com/w3css/img_nature_wide.jpg">
@@ -11,8 +10,8 @@
         <div class="box back2"  [routerLink]="['/chat-room']">
           <span class="span">چت ناشناس</span>
         </div>
-        <div class="box back9 right tall">
-          <span class="span">درباره ما</span>
+        <div class="box back9 right tall" [routerLink]="['about-us']" >
+          <a >درباره ما</a>
         </div>
         <div class="box back4">
           <span class="span">ورود</span>
