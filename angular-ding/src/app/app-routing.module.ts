@@ -7,7 +7,7 @@ import { HomeComponent } from './Home/Home.component';
 const routes: Routes = [
   {path:'WebPlatform',component:WebPlatformComponent},
   {path:'chat-room',component:ChatRoomComponent},
-  {path:'Home',component:HomeComponent}
+  {path:'',component:HomeComponent}
 
 ];
 

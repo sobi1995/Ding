@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ResizedEvent } from 'angular-resize-event';
 import { PushNotificationsService } from 'ng-push-ivy';
@@ -24,7 +25,9 @@ export class ChatRoomComponent implements OnInit {
   ShowLoader = true;
   isTypeing = false;
   CountOnlineUsers = 0;
-  constructor(private _pushNotifications: PushNotificationsService) {
+  constructor(
+    private _pushNotifications: PushNotificationsService,
+    private _router:Router) {
     var _self = this;
     this._pushNotifications.requestPermission();
     document.addEventListener('visibilitychange', function () {
@@ -66,6 +69,7 @@ export class ChatRoomComponent implements OnInit {
       this.StartSocket();
     }, 5000);
   }
+  
   public reloadpage() {
     this._hubConnection.stop();
     this.message = '';
@@ -146,5 +150,11 @@ export class ChatRoomComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
     );
+  }
+  Back(){
+
+ 
+this._hubConnection.stop();
+ this._router.navigate(["/"])
   }
 }

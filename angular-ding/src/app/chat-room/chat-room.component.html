@@ -2,7 +2,7 @@
   <nav class="nav" id="nav">
     <div class="default-nav">
       <div class="main-nav">
-        <div class="toggle" [routerLink]="['/Home']"></div>
+        <div class="toggle" (click)="Back()"></div>
         <div class="main-nav-item">
             &nbsp;
             <span *ngIf="isTypeing">is typeing...</span>

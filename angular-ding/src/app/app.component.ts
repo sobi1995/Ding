@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       this.router.navigate(["/WebPlatform"])
     }
     else {
-      this.router.navigate(["/chat-room"])
+      this.router.navigate(["/"])
     }
   }
 
