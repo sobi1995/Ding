@@ -152,9 +152,7 @@ export class ChatRoomComponent implements OnInit {
     );
   }
   Back(){
-
- 
-this._hubConnection.stop();
- this._router.navigate(["/"])
+    this._hubConnection.stop();
+    this._router.navigate(["/"])
   }
 }
