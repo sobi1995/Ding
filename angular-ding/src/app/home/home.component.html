@@ -1,24 +1,29 @@
 
       <div class="page">
-        <div class="box hero back11"  [routerLink]="['/chat-room']">
-            <span>چت ناشناس</span>
+        <div class="box hero back11">
+        <img [ngStyle]="{'opacity':slideIndex==1 ? 1 : 0 }" class="mySlides" src="https://www.w3schools.com/w3css/img_nature_wide.jpg">
+        <img [ngStyle]="{'opacity':slideIndex==2 ? 1 : 0 }" class="mySlides" src="https://www.w3schools.com/w3css/img_snow_wide.jpg">
+        <img [ngStyle]="{'opacity':slideIndex==3 ? 1 : 0 }" class="mySlides" src="https://www.w3schools.com/w3css/img_mountains_wide.jpg" >
+        <button class="btn-back"  (click)="slider(1)"><</button>  
+        <button  class="btn-next" (click)="slider(-1)">></button>  
+        <span class="span"> Ding </span>
         </div>
-        <div class="box back2">
-          <span>Ding</span>
+        <div class="box back2"  [routerLink]="['/chat-room']">
+          <span class="span">چت ناشناس</span>
         </div>
         <div class="box back9 right tall">
-          <span>درباره ما</span>
+          <span class="span">درباره ما</span>
         </div>
         <div class="box back4">
-          <span>ورود</span>
+          <span class="span">ورود</span>
         </div>
         <div class="box back3">
-          <span>ثبت نام</span>
+          <span class="span">ثبت نام</span>
         </div>
         <div class="box back6 right">
-          <span>Big Hero 6</span>
+          <span class="span">Big Hero 6</span>
         </div>
         <div class="box back8 wide">
-          <span>Hunger Games</span>
+          <span class="span">Hunger Games</span>
         </div>
       </div>

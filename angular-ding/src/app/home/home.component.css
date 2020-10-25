@@ -44,7 +44,7 @@
   }
 
   
-  span {
+  .span {
     position: absolute;
     color: #fff;
     font-size: 15px;
@@ -53,4 +53,40 @@
     text-transform: uppercase;
     padding: 25px 25px;
     font-weight: 600;
+  }
+
+  .mySlides{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+     transition: 1s;
+  }
+  .btn-back{
+    position: absolute;
+    padding: 6px;
+    background-color: white;
+    color: black;
+    top: 50%;
+    opacity: 0.3;
+    font-weight: bold;
+    border-radius: 13px;
+    transform: translatey(-50%);
+    filter: blur(1px);
+    left: 4px;
+  } 
+   .btn-next{
+    position: absolute;
+    padding: 6px;
+    background-color: white;
+    color: black;
+    top: 50%;
+    opacity: 0.3;
+    font-weight: bold;
+    border-radius: 13px;
+    transform: translatey(-50%);
+    filter: blur(1px);
+    right: 4px;
   }
