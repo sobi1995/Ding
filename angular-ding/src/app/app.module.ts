@@ -10,6 +10,7 @@ import { WebPlatformComponent } from './web-platform/web-platform.component';
 import { AngularResizedEventModule } from 'angular-resize-event';
 import { PushNotificationsModule } from 'ng-push-ivy';
 import { HomeComponent } from './Home/Home.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 // import { HomeComponent } from './home/home.component';
  
  
@@ -18,7 +19,8 @@ import { HomeComponent } from './Home/Home.component';
     AppComponent,
     ChatRoomComponent,
     WebPlatformComponent,
-    HomeComponent
+    HomeComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
