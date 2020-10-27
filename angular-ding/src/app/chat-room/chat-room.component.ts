@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ResizedEvent } from 'angular-resize-event';
 import { PushNotificationsService } from 'ng-push-ivy';
- 
+import swal from 'sweetalert2';
 import { timer } from 'rxjs';
 
 @Component({
@@ -152,7 +152,22 @@ export class ChatRoomComponent implements OnInit {
     );
   }
   Back(){
-    this._hubConnection.stop();
-    this._router.navigate(["/"])
+    swal.fire({
+      title: 'بازگشت  ',
+      text: "آیا مایل به بازگشت هستید",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'خیر',
+      confirmButtonText: 'بله'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._hubConnection.stop();
+        this._router.navigate(["/"])
+      }
+    })
+
+  
   }
 }
