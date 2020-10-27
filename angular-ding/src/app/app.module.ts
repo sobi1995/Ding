@@ -11,6 +11,7 @@ import { AngularResizedEventModule } from 'angular-resize-event';
 import { PushNotificationsModule } from 'ng-push-ivy';
 import { HomeComponent } from './Home/Home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { HelpComponent } from './help/help.component';
 // import { HomeComponent } from './home/home.component';
  
  
@@ -20,7 +21,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     ChatRoomComponent,
     WebPlatformComponent,
     HomeComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,

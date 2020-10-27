@@ -53,7 +53,7 @@ export class ChatRoomComponent implements OnInit {
       }
 
       this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
-      if (statusCode != 5) {
+      if (statusCode != 5 && statusCode!=8) {
         this.AddMessageToList(this.message, true);
         this.message = '';
       }
@@ -119,6 +119,9 @@ export class ChatRoomComponent implements OnInit {
         setTimeout(() => { this.StartSocket() }, 3000);
       } else if (data.status === 7) {
         this.CountOnlineUsers = data.msg
+      } else if (data.status === 8) {
+        var audio = new Audio('../assets/Song/Ding1.mp3');
+        audio.play();
       }
     });
 
