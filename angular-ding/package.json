@@ -27,6 +27,7 @@
     "ng-push-ivy": "^1.0.6",
     "ngx-device-detector": "^2.0.0",
     "rxjs": "~6.5.5",
+    "sweetalert2": "^10.8.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
