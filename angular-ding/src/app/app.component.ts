@@ -24,12 +24,12 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    if (!this.deviceService.isMobile()) {
-      this.router.navigate(["/WebPlatform"])
-    }
-    else {
-      this.router.navigate(["/"])
-    }
+    // if (!this.deviceService.isMobile()) {
+    //   this.router.navigate(["/WebPlatform"])
+    // }
+    // else {
+    //   this.router.navigate(["/"])
+    // }
   }
 
 }
