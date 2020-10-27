@@ -47,6 +47,7 @@
     list-style: none;
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
+    
   }
   .nav .default-nav .main-nav .toggle {
     height: 32px;
@@ -78,6 +79,9 @@
     line-height: 64px;
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
+    font-size: 21px;
+    text-align: center;
+    width: 192px;
   }
   
   @media (max-width: 560px) {
@@ -91,5 +95,27 @@
               transform: translateX(0);
     }
   }
-  body {
+  .div-body{
+    height: 100%;
+    width: 100%;
   }
+  .mySlides{
+    z-index: 0;
+    transition: 1s;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 10px;
+    padding-bottom: 74px;
+  }
+  .btn-back{
+    left: 15px;
+    position: absolute;
+    bottom: 15px;
+  } 
+  .btn-next{
+    right: 15px;
+    position: absolute;
+    bottom: 15px;
+  }  
+  

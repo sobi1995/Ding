@@ -15,4 +15,19 @@ export class HelpComponent implements OnInit {
   Back(){
     this._router.navigate(["/"])
   }
+  slideIndex=1; 
+  
+  slider(n) {
+    this.slideIndex+=n;
+  }
+
+  lengthImages(){
+    var x = document.getElementsByClassName("mySlides");
+    return x.length;
+  }
+
+  ShowButtonNext(){
+    return this.lengthImages() > this.slideIndex
+  }
+
 }

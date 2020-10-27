@@ -1,6 +1,7 @@
 .page {
   overflow-y: auto;
   overflow-x: hidden;
+  height: 100%;
 }
 
 .back1 { background: -webkit-linear-gradient(-50deg, rgb(174, 147, 187), rgb(166, 61, 113)); }
@@ -180,6 +181,7 @@
     line-height: 64px;
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
+    font-size: 21px;
   }
   
   @media (max-width: 560px) {

@@ -11,4 +11,13 @@
       </div>
     </nav>
 
+    <div class="div-body">
+      <img [ngStyle]="{'opacity':slideIndex==1 ? 1 : 0 }" class="mySlides" src="http://s16.picofile.com/file/8412064342/2.jpg">
+      <img [ngStyle]="{'opacity':slideIndex==2 ? 1 : 0 }" class="mySlides" src="http://s16.picofile.com/file/8412064350/22.jpg">
+      <img [ngStyle]="{'opacity':slideIndex==3 ? 1 : 0 }" class="mySlides" src="http://s17.picofile.com/file/8412064334/1.jpg" >
+      <button *ngIf="slideIndex !=1" class="btn-back btn btn-primary"  (click)="slider(-1)">قبلی</button>  
+      <button *ngIf="ShowButtonNext()" class="btn-next btn btn-primary" (click)="slider(1)">بعدی</button>  
+      <button *ngIf="!ShowButtonNext()" class="btn-next btn btn-success" (click)="Back()">بستن</button>  
+
+    </div>
 </div>
