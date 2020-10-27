@@ -331,8 +331,8 @@ width: 150px;
 height: 150px;
 }
 .btn-refresh{
-  width: inherit;
-  height: inherit;
+  width: 80%;
+  height: 80%;
   background: url(/assets/ImgTools/Next.png) no-repeat center center;
   background-size: contain;
 
@@ -370,4 +370,16 @@ height: 150px;
     border: 1px solid gray;
     box-shadow: 1px 1px 7px 2px silver;
   }
-
+  .td-right{
+    width: 64px;
+    }  
+    .td-left{
+      width: 64px;
+    }  
+    .td-main{
+      font-size: 21px;
+    }
+    .table-navbar{
+    height: 100%;
+    }  
+  

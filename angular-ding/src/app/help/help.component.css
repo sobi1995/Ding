@@ -118,4 +118,17 @@
     position: absolute;
     bottom: 15px;
   }  
-  
+  .td-right{
+  width: 64px;
+  }  
+  .td-left{
+    width: 64px;
+  }  
+  .td-main{
+    font-size: 21px;
+  }
+  .table-navbar{
+  height: 100%;
+  }  
+
+      

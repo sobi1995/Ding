@@ -195,3 +195,16 @@
               transform: translateX(0);
     }
   }
+  .td-right{
+    width: 64px;
+    }  
+    .td-left{
+      width: 64px;
+    }  
+    .td-Main{
+      font-size: 21px;
+    }
+    .table-navbar{
+    height: 100%;
+    }  
+  

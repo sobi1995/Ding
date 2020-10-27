@@ -2,15 +2,16 @@
     <nav class="nav" id="nav">
       <div class="default-nav">
         <div class="main-nav">
-            <div class="toggle" (click)="Back()"></div>
-            <div class="main-nav-item">
-                راهنمای سایت
-            </div>
-            <div class="options"></div>
+          <table class="w-100 text-center table-navbar">
+            <tr>
+              <td class="td-left"><div class="toggle" (click)="Back()"></div>              </td>
+              <td class="td-main">راهنمای سایت</td>
+              <td class="td-right"></td>
+            </tr>
+          </table>  
         </div>
       </div>
     </nav>
-
     <div class="div-body">
       <img [ngStyle]="{'opacity':slideIndex==1 ? 1 : 0 }" class="mySlides" src="http://s16.picofile.com/file/8412064342/2.jpg">
       <img [ngStyle]="{'opacity':slideIndex==2 ? 1 : 0 }" class="mySlides" src="http://s16.picofile.com/file/8412064350/22.jpg">
@@ -18,6 +19,5 @@
       <button *ngIf="slideIndex !=1" class="btn-back btn btn-primary"  (click)="slider(-1)">قبلی</button>  
       <button *ngIf="ShowButtonNext()" class="btn-next btn btn-primary" (click)="slider(1)">بعدی</button>  
       <button *ngIf="!ShowButtonNext()" class="btn-next btn btn-success" (click)="Back()">بستن</button>  
-
     </div>
 </div>

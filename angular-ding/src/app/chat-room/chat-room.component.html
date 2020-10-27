@@ -2,14 +2,15 @@
   <nav class="nav" id="nav">
     <div class="default-nav">
       <div class="main-nav">
-        <div class="toggle" (click)="Back()"></div>
-        <div class="main-nav-item">
-            &nbsp;
-            <span *ngIf="isTypeing">is typeing...</span>
-        </div>
-        <div class="options">
-          <button [disabled]='ShowLoader' class="btn btn-primary btn-refresh" (click)="disconect()"></button>
-        </div>
+
+        <table class="w-100 text-center table-navbar">
+          <tr>
+            <td class="td-left"><div class="toggle" (click)="Back()"></div>              </td>
+            <td class="td-main"><span *ngIf="isTypeing">is typeing...</span>            </td>
+            <td class="td-right">           <button [disabled]='ShowLoader' class="btn btn-primary btn-refresh" (click)="disconect()"></button>
+            </td>
+          </tr>
+        </table>  
       </div>
     </div>
   </nav>
