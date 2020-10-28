@@ -27,7 +27,7 @@ export class ChatRoomComponent implements OnInit {
   CountOnlineUsers = 0;
   constructor(
     private _pushNotifications: PushNotificationsService,
-    private _router:Router) {
+    private _router: Router) {
     var _self = this;
     this._pushNotifications.requestPermission();
     document.addEventListener('visibilitychange', function () {
@@ -36,6 +36,11 @@ export class ChatRoomComponent implements OnInit {
       else
         _self.IsPushNotifications = false;
     });
+
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
 
   }
   // tslint:disable-next-line:typedef
@@ -53,7 +58,7 @@ export class ChatRoomComponent implements OnInit {
       }
 
       this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
-      if (statusCode != 5 && statusCode!=8) {
+      if (statusCode != 5 && statusCode != 8) {
         this.AddMessageToList(this.message, true);
         this.message = '';
       }
@@ -62,14 +67,29 @@ export class ChatRoomComponent implements OnInit {
   // tslint:disable-next-line:typedef
 
   public disconect() {
-    this.message = 'goodbye';
-    this.sendMessage(6);
-    this.reloadpage();
-    setTimeout(() => {
-      this.StartSocket();
-    }, 5000);
+    swal.fire({
+      title: 'قطع مکالمه',
+      text: "ایا مایل به قطع مکالمه و پیدا کردن نفر جدید هستید؟",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'خیر',
+      confirmButtonText: 'بله'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.message = 'goodbye';
+        this.sendMessage(6);
+        this.reloadpage();
+        setTimeout(() => {
+          this.StartSocket();
+        }, 5000);
+      }
+    })
+
+
   }
-  
+
   public reloadpage() {
     this._hubConnection.stop();
     this.message = '';
@@ -107,8 +127,8 @@ export class ChatRoomComponent implements OnInit {
       else if (data.status === 1) {
         const received = `Received: ${data}`;
         this.messages.push({ message: data.message, type: false });
-        if(this.IsPushNotifications==true)
-        this.notify(data.message)
+        if (this.IsPushNotifications == true)
+          this.notify(data.message)
       }
       else if (data.status === 5) {
         this.isTypeing = true
@@ -154,7 +174,7 @@ export class ChatRoomComponent implements OnInit {
       err => console.log(err)
     );
   }
-  Back(){
+  Back() {
     swal.fire({
       title: 'بازگشت  ',
       text: "آیا مایل به بازگشت هستید",
@@ -171,6 +191,13 @@ export class ChatRoomComponent implements OnInit {
       }
     })
 
-  
+
   }
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event) {
+    this.Back();
+   
+  }
+
+
 }
