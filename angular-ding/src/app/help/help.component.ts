@@ -19,20 +19,5 @@ export class HelpComponent implements OnInit {
         history.go(1);
     };
     this._router.navigate(["/"])
-  }
-  slideIndex=1; 
-  
-  slider(n) {
-    this.slideIndex+=n;
-  }
-
-  lengthImages(){
-    var x = document.getElementsByClassName("mySlides");
-    return x.length;
-  }
-
-  ShowButtonNext(){
-    return this.lengthImages() > this.slideIndex
-  }
-
+  } 
 }
