@@ -13,6 +13,11 @@ export class HelpComponent implements OnInit {
   ngOnInit(): void {
   }
   Back(){
+    localStorage.setItem("home-screen",'0');
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
     this._router.navigate(["/"])
   }
   slideIndex=1; 

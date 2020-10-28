@@ -35,12 +35,12 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-     
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      this.slider=true;
+     var homeScreen=localStorage.getItem("home-screen")
+    if (window.matchMedia('(display-mode: standalone)').matches || (homeScreen=="0" || homeScreen==undefined)) {
+      this.router.navigate(["/"])
     }
     else{
-      this.slider=false;
+      this.router.navigate(["/help"])
     }
 
     // if (!this.deviceService.isMobile()) {

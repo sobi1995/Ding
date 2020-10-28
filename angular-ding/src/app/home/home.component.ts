@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 
 @Component({
@@ -33,5 +33,5 @@ timerEnable=true
       this.timerEnable=true;
     }, 3000);    
   }
-  
+ 
 }
