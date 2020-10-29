@@ -22,14 +22,20 @@
           <div class="circle-wrapper animated bounceIn">
             <img src="../assets/ProfilePicture/MyDefultProfilePicture.png" class="ProfilePicture"/>
           </div>
-          <div class="text-wrapper animated fadeIn">{{ msg.message }}</div>
+          <div class="text-wrapper animated fadeIn">
+            {{ msg.message }}
+            <div class="div-description">{{msg.time}}</div>
+          </div>
         </div>
 
         <div class="message-wrapper them" *ngIf="msg.type == false">
           <div class="circle-wrapper animated bounceIn">
             <img src="../assets/ProfilePicture/SercretProfilePictuer.png" class="ProfilePicture"/>
           </div>
-          <div class="text-wrapper animated fadeIn">{{ msg.message }}</div>
+          <div class="text-wrapper animated fadeIn">
+            {{ msg.message }}
+            <div class="div-description">{{msg.time}}</div>
+          </div>
         </div>
       </div>
       <div id="scroll"></div>

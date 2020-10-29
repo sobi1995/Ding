@@ -382,4 +382,13 @@ height: 150px;
     .table-navbar{
     height: 100%;
     }  
-  
+  .div-description{
+    font-size: 12px;
+    width: 100%;
+    border-top: 1px solid;
+    border-color: black;
+    margin-bottom: -10px;
+    text-align: center;
+    padding: 0px 12px 0px 12px;
+
+  }

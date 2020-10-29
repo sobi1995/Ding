@@ -54,7 +54,7 @@ export class ChatRoomComponent implements OnInit {
       const message = {
         GroupName: this.GroupName,
         Status: statusCode,
-        Message: this.message
+        Message: this.message,
       }
 
       this._hubConnection.invoke('SedndMessageGroupExceptCurentUser', message);
@@ -69,7 +69,7 @@ export class ChatRoomComponent implements OnInit {
   public disconect() {
     swal.fire({
       title: 'قطع مکالمه',
-      text: "ایا مایل به قطع مکالمه و پیدا کردن نفر جدید هستید؟",
+      text: "آیا مایل به قطع مکالمه و پیدا کردن نفر جدید هستید؟",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -108,7 +108,8 @@ export class ChatRoomComponent implements OnInit {
     this.StartSocket();
   }
   public AddMessageToList(msg, type) {
-    this.messages.push({ message: msg, type: type });
+  var now = new Date();
+  this.messages.push({ message: msg, type: type,time:this.getTime(now) });
   }
 
   // tslint:disable-next-line:typedef
@@ -126,7 +127,7 @@ export class ChatRoomComponent implements OnInit {
       }
       else if (data.status === 1) {
         const received = `Received: ${data}`;
-        this.messages.push({ message: data.message, type: false });
+        this.messages.push({ message: data.message, type: false, time:data.persianDate });
         if (this.IsPushNotifications == true)
           this.notify(data.message)
       }
@@ -155,7 +156,6 @@ export class ChatRoomComponent implements OnInit {
       });
   }
   public scrollToBottom() {
-    console.log(document.querySelector('#content').clientHeight)
     const myDiv = document.querySelector('#scroll');
     myDiv.scrollIntoView();
   }
@@ -198,6 +198,19 @@ export class ChatRoomComponent implements OnInit {
     this.Back();
    
   }
+
+
+getTime(datetime){
+    var strDateTime = [
+        [[this.AddZero(datetime.getHours()), 
+          this.AddZero(datetime.getMinutes())].join(":"),
+          this.AddZero(datetime.getSeconds())] .join(":"),
+          datetime.getHours() >= 12 ? "PM" : "AM"].join(" ");
+        return strDateTime;
+}
+AddZero(num) {
+  return (num >= 0 && num < 10) ? "0" + num : num + "";
+}
 
 
 }

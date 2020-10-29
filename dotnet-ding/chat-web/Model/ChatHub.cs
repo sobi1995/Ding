@@ -189,10 +189,11 @@ namespace chatweb.Model
         public MessageGroup()
         {
             Date = DateTime.Now;
+
         }
         public string Message { get; set; }
         public DateTime Date { get; set; }
-        public string PersianDate => Date.ToLongPersianDateTimeString();
+        public string PersianDate => Date.ToString("hh:mm:ss tt");
 
         public Status Status { get; set; }
         public string GroupName { get; set; }
