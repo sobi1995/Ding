@@ -22,7 +22,7 @@ namespace WebApplication1
             var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
-                logger.Info("init main");
+ 
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception exception)
