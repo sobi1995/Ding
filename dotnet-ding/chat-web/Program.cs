@@ -22,7 +22,7 @@ namespace WebApplication1
             var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
- 
+                logger.Info("int main");
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception exception)
@@ -47,7 +47,7 @@ namespace WebApplication1
               .ConfigureLogging(logging =>
               {
                   logging.ClearProviders();
-                  logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
+                  logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
               })
               .UseNLog();  // NLog: Setup NLog for Dependency injection
 
