@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +8,16 @@ import { Router } from '@angular/router';
 })
 export class HelpComponent implements OnInit {
 
-  constructor(private _router:Router) { }
+  constructor(private _router:Router) { 
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+  }
   helpchecked=false
   ngOnInit(): void {
     var helpRread=localStorage.getItem("Help-Version-1")
-    if (helpRread=="0" ) {
+    if (helpRread) {
       this.helpchecked=true
     }
   }
@@ -21,10 +26,13 @@ export class HelpComponent implements OnInit {
   } 
   readHelpPage(){
     localStorage.setItem("Help-Version-1",'0');
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-        history.go(1);
-    };
     this.Back()
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event) {
+    if(this.helpchecked){
+      this.Back();
+    }
   }
 }

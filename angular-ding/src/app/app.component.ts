@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
         swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'دینگ ابدیت شد :)',
+          title: 'دینگ آپدیت شد :)',
           showConfirmButton: true,
           confirmButtonText: "باشه",
         }).then(function (result) {
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
      var helpRread=localStorage.getItem("Help-Version-1")
 
-    if (!(window.matchMedia('(display-mode: standalone)').matches) && helpRread==undefined) {
+    if (!(window.matchMedia('(display-mode: standalone)').matches) && !helpRread) {
       this.router.navigate(["/help"])
     }
     else{
