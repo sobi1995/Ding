@@ -11,9 +11,15 @@ namespace chatweb.Model
     public class ChatHub : Hub
     {
         private static readonly ConcurrentDictionary<string, UserSocket> Users = new ConcurrentDictionary<string, UserSocket>();
-    
 
-     
+
+        private readonly ILogger<ChatHub> _logger;
+
+        public ChatHub(ILogger<ChatHub> logger)
+        {
+            this._logger = logger;
+        }
+
         public byte MaxMemberOfGroup { get; set; }
 
 
@@ -48,7 +54,8 @@ namespace chatweb.Model
         }
         public Task SedndMessageGroupExceptCurentUser(MessageGroup message)
         {
-       
+            if(message.Status==Status.Chating)
+           this._logger.LogInformation(message.Message);
             return Clients.GroupExcept(message.GroupName, Context.ConnectionId).SendAsync("ReceiveMessage", message);
         }
 
