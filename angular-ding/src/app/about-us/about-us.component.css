@@ -2,7 +2,11 @@
   font-family: 'Droid Serif ';
   font-size: 17px
 }
-
+#amazingTeam{
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
 a, article, body, center, div, h1, h2, h3, h4, h5, h6, html, i, img, li, p, section, ul {
   margin: 0;
   padding: 0;
