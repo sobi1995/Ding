@@ -1,24 +1,35 @@
 <div class="wrapper">
- 
-    <div class="div-body">
+  <nav class="nav" id="nav">
+    <div class="default-nav">
+      <div class="main-nav">
+        <table class="w-100 text-center table-navbar">
+            <tr>
+              <td class="td-left"><div *ngIf="helpchecked" class="toggle" (click)="Back()"></div>              </td>
+              <td class="td-main">راهنمای سایت</td>
+              <td class="td-right"></td>
+            </tr>
+          </table>  
+       </div> 
+    </div>
+  </nav>  
+<div class="div-body">
 <div class="col-md-12" dir="rtl">
   <b>1 - </b>
   <span> این گذینه را انتخاب کنید</span>
   <img class="image-help" src="http://s16.picofile.com/file/8412064342/2.jpg">
- <br>
- <br>
- <b>2 - </b>
+  <br>
+  <br>
+  <b>2 - </b>
   <span> این گذینه را انتخاب کنید</span>
   <img class="image-help" src="http://s16.picofile.com/file/8412064350/22.jpg">
   <br>
   <br>
- <b>3 - </b>
+  <b>3 - </b>
   <span> این گذینه را انتخاب کنید</span>
   <img class="image-help" src="http://s17.picofile.com/file/8412064334/1.jpg" >
   <br>
   <br>
-  <button class="btn-next btn btn-success btn-block" (click)="Back()">راهنمای سایت را مشاهده کردم</button>  
-
+  <button class="btn-next btn btn-success btn-block" (click)="readHelpPage()">راهنمای سایت را مشاهده کردم</button>
 </div>  
-  </div>
+</div>
 </div>
