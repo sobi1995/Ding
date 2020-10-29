@@ -114,7 +114,7 @@ export class ChatRoomComponent implements OnInit {
   // tslint:disable-next-line:typedef
   StartSocket() {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl('https://siteinjast.ir/chathub')
+      .withUrl('https://localhost:44300/chathub')
       .build();
 
     this._hubConnection.on('ReceiveMessage', (data: any) => {
