@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using DNTPersianUtils.Core;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
@@ -185,8 +186,14 @@ namespace chatweb.Model
 
     public class MessageGroup
     {
+        public MessageGroup()
+        {
+            Date = DateTime.Now;
+        }
         public string Message { get; set; }
         public DateTime Date { get; set; }
+        public string PersianDate => Date.ToLongPersianDateTimeString();
+
         public Status Status { get; set; }
         public string GroupName { get; set; }
 
