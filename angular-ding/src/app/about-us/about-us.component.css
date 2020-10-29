@@ -1,5 +1,4 @@
 .services_p {
-  font-family: 'Droid Serif ';
   font-size: 17px
 }
 #amazingTeam{
@@ -21,7 +20,6 @@ body, html {
 body {
   background: #fff;
   color: #666;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 100%
 }
 
@@ -74,14 +72,12 @@ section {
 }
 
 .section4_article > h3 {
-  font-family: MontserratBold,sans-serif;
   color: #000;
   margin-bottom: 3%;
   font-size: 18px
 }
 
 .section4_article > p {
-  font-family: RobotoSlab,serif;
   word-spacing: 1px;
   font-size: 18px
 }
@@ -121,7 +117,6 @@ section {
 }
 
 .services_p_team {
-  font-family: RobotoSlab,serif;
   font-size: 17px;
   width: 70%;
   margin: 0 auto
@@ -216,16 +211,14 @@ section {
       letter-spacing: 2px;
       font-size: 24px;
       margin: 0 15px;
-      padding: 60px 0 0 0;
-      height: 110px;
-      font-family: Montserrat,sans-serif;
+      padding: 55px 0 0 0;
+      height: 95px;
       text-shadow: 0 0 1px #fff,0 1px 2px rgba(0,0,0,.3)
   }
 
   .ch-info p {
       color: #fff;
       padding: 10px 5px;
-      font-family: 'RobotoSlab ',serif;
       font-style: italic;
       margin: 10px 30px;
       font-size: 14px;
@@ -233,17 +226,16 @@ section {
   }
 
       .ch-info p a {
+        margin: 10px;
           text-transform: uppercase;
           letter-spacing: 1px;
-          padding-top: 4px;
-          font-family: Montserrat,sans-serif;
           position: relative;
           font-weight: 700;
           display: inline-block;
-          color: #fff;
+          color: chartreuse;
           text-decoration: none;
           text-shadow: 0 0 1px rgba(255,255,255,.3);
-          font-size: 1em;
+          font-size: 20px;
           -webkit-transition: color .3s;
           -ms-transition: color .3s;
           -moz-transition: color .3s;
@@ -266,7 +258,6 @@ section {
 }
 
 .services_h2 {
-  font-family: Montserrat,sans-serif;
   font-weight: 700;
   color: #000;
   margin-bottom: 5px;
@@ -284,15 +275,21 @@ section {
 }
 
 .ch-img-1 {
-  background: url(https://scontent-frx5-1.cdninstagram.com/v/t51.2885-19/s150x150/120135058_3723673647655746_7182116979361149949_n.jpg?_nc_ht=scontent-frx5-1.cdninstagram.com&_nc_ohc=IXIYFp5GiXwAX_1iqWu&oh=81ab49c7d859ce5158fc101cbceea4bd&oe=5FC12D88)
+  background: url(https://scontent-frx5-1.cdninstagram.com/v/t51.2885-19/s150x150/120135058_3723673647655746_7182116979361149949_n.jpg?_nc_ht=scontent-frx5-1.cdninstagram.com&_nc_ohc=IXIYFp5GiXwAX_1iqWu&oh=81ab49c7d859ce5158fc101cbceea4bd&oe=5FC12D88);
+  background-size: cover;
+
 }
 
 .ch-img-2 {
-  background: url(https://instagram.fevn1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/122741487_1010940706087035_3452862813848616285_n.jpg?_nc_ht=instagram.fevn1-1.fna.fbcdn.net&_nc_ohc=YEiyb9tdE00AX9ctwKz&oh=45ad4384a8d4b4b4e93c46cd06c05389&oe=5FBF4BD7)
+  background: url(https://instagram.fevn1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/122741487_1010940706087035_3452862813848616285_n.jpg?_nc_ht=instagram.fevn1-1.fna.fbcdn.net&_nc_ohc=YEiyb9tdE00AX9ctwKz&oh=45ad4384a8d4b4b4e93c46cd06c05389&oe=5FBF4BD7);
+  background-size: cover;
+
 }
 
 .ch-img-3 {
-  background: url(https://lh3.googleusercontent.com/-G-cmOndZrlg/AAAAAAAAAAI/AAAAAAAAAAA/5UeICGDEsGo/photo.jpg)
+  background: url(https://lh3.googleusercontent.com/-G-cmOndZrlg/AAAAAAAAAAI/AAAAAAAAAAA/5UeICGDEsGo/photo.jpg);
+  background-size: cover;
+
 }
 
 @media (min-width:300px) {
@@ -500,7 +497,6 @@ section {
       text-align: center;
       font-size: 2em;
       font-weight: 700;
-      font-family: Montserrat,sans-serif;
       background: rgba(254,209,54,1);
       -webkit-border-radius: 3px 3px 0 0;
       -moz-border-radius: 3px 3px 0 0;
@@ -519,7 +515,6 @@ section {
           font-size: 20px;
           padding: 10px 0;
           font-weight: 700;
-          font-family: RobotoSlab,serif;
           text-align: center
       }
 
@@ -530,7 +525,6 @@ section {
 
           .md-content > div ul li {
               padding: 5px 0;
-              font-family: RobotoSlab,serif;
               font-size: 19px;
               text-align: left
           }
@@ -620,7 +614,6 @@ section {
 }
 
 .icon-heart:after {
-  font-family: icomoon;
   speak: none;
   font-style: normal;
   font-weight: 400;
