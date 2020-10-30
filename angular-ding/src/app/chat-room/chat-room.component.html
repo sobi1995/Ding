@@ -41,8 +41,8 @@
       <div id="scroll"></div>
     </div>
   </div>
-  <form class="form-inline" (ngSubmit)="sendMessage(1)" #messageForm="ngForm">
-    <div class="bottom" id="bottom">
+  <form class="form-inline" (ngSubmit)="sendMessage(1)" #messageForm="ngForm" >
+    <div class="bottom" id="bottom" >
       <input
         type="text"
         (keyup)="sendMessage(5)"
@@ -54,12 +54,14 @@
         [(ngModel)]="message"
         autocomplete="off"
         required
+        [disabled]='ShowLoader'
       />
       <button
         type="submit"
         class="send ImgSubmit" 
         [hidden]="!messageForm.valid"
         onclick="document.getElementById('input').focus()"
+        [disabled]='ShowLoader'
       ></button>
 
       <span class="send ImgEmoji BtnSendEmoji" [hidden]="messageForm.valid" >
