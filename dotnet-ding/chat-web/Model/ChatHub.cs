@@ -56,7 +56,7 @@ namespace chatweb.Model
         public Task SedndMessageGroupExceptCurentUser(MessageGroup message)
         {
             if(message.Status==Status.Chating)
-           this._logger.LogInformation(message.Message);
+           this._logger. LogInformation(message.Message);
             return Clients.GroupExcept(message.GroupName, Context.ConnectionId).SendAsync("ReceiveMessage", message);
         }
 
