@@ -12,6 +12,7 @@ import { PushNotificationsModule } from 'ng-push-ivy';
 import { HomeComponent } from './Home/Home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HelpComponent } from './help/help.component';
+import { SettingsComponent } from './settings/settings.component';
 // import { HomeComponent } from './home/home.component';
  
  
@@ -22,7 +23,8 @@ import { HelpComponent } from './help/help.component';
     WebPlatformComponent,
     HomeComponent,
     AboutUsComponent,
-    HelpComponent
+    HelpComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,49 @@
+<div class="wrapper">
+    <nav class="nav" id="nav">
+      <div class="default-nav">
+        <div class="main-nav">
+          <table class="w-100 text-center table-navbar">
+              <tr>
+                <td class="td-left"><div class="toggle" (click)="Back()"></div></td>
+                <td class="td-main">تنظیمات</td>
+                <td class="td-right"></td>
+              </tr>
+            </table>  
+         </div> 
+      </div>
+    </nav>  
+    <div class="col-md-12">
+      <table class="table text-right table-striped">
+        <tr>
+          <td class="w-50">
+            <input type="text" [checked]="Setting.UsabilityNotification" (change)="Setting.UsabilityNotification=!Setting.UsabilityNotification"  type="checkbox"  id="UsabilityNotification"/>        
+          </td>
+          <td class="w-50">
+            <label for="UsabilityNotification">دریافت اعلان ها </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="w-50">
+            <input type="text" [checked]="Setting.UsabilitySounds" (change)="Setting.UsabilitySounds=!Setting.UsabilitySounds"  type="checkbox"  id="UsabilitySounds"/>        
+          </td>
+          <td class="w-50">
+            <label for="UsabilitySounds">پخش صدا ها </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="w-50">
+            <button class="btn btn-danger btn-block" (click)="Back()">انصراف</button>     
+          </td>
+          <td class="w-50">
+            <button class="btn btn-success btn-block" (click)="SaveSettings()">ذخیره تنظیمات</button>     
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+
+

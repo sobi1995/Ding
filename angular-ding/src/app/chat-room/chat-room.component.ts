@@ -4,7 +4,6 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ResizedEvent } from 'angular-resize-event';
 import { PushNotificationsService } from 'ng-push-ivy';
 import swal from 'sweetalert2';
-import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-chat-room',
