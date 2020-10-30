@@ -6,10 +6,10 @@
 
 .back1 { background: -webkit-linear-gradient(-50deg, rgb(174, 147, 187), rgb(166, 61, 113)); }
 .back2 { background: -webkit-linear-gradient(-50deg, hotpink,pink) }
-.back3 { background: -webkit-linear-gradient(-50deg, rgb(128, 143, 182), rgb(55, 63, 82)); }
-.back4 { background: -webkit-linear-gradient(-50deg, rgb(202, 162, 133), rgb(192, 191, 60)); }
+.back3 { background: -webkit-linear-gradient(-50deg, greenyellow, green); }
+.back4 { background: -webkit-linear-gradient(-50deg, white, red) }
 .back5 { background: -webkit-linear-gradient(-50deg, rgb(147, 176, 187), rgb(61, 122, 166)); }
-.back6 { background: -webkit-linear-gradient(-50deg,  greenyellow, green); }
+.back6 { background: -webkit-linear-gradient(-50deg,rgb(254,255,0) , rgb(255,102,0));}
 .back7 { background: -webkit-linear-gradient(-50deg, rgb(157, 147, 187), rgb(102, 89, 161)); }
 .back8 { background: -webkit-linear-gradient(-50deg, rgb(175, 171, 178), rgb(105, 95, 100)); }
 .back9 { background: -webkit-linear-gradient(-50deg, cyan,darkblue) }
