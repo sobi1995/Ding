@@ -13,6 +13,7 @@ import { HomeComponent } from './Home/Home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HelpComponent } from './help/help.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 // import { HomeComponent } from './home/home.component';
  
  
@@ -24,7 +25,8 @@ import { SettingsComponent } from './settings/settings.component';
     HomeComponent,
     AboutUsComponent,
     HelpComponent,
-    SettingsComponent
+    SettingsComponent,
+    ComingSoonComponent
   ],
   imports: [
     BrowserModule,

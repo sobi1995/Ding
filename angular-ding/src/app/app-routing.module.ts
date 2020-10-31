@@ -6,6 +6,7 @@ import { HomeComponent } from './Home/Home.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HelpComponent } from './help/help.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 const routes: Routes = [
   {path:'WebPlatform',component:WebPlatformComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'help',component:HelpComponent},
   {path:'settings',component:SettingsComponent},
+  {path:'comingsoon',component:ComingSoonComponent},
 
 ];
 
