@@ -49,7 +49,6 @@ export class ChatRoomComponent implements OnInit {
 
   public sendMessage(statusCode: number): void {
     if (this.message.length > 0) {
-      const data = `Me : ${this.message}`;
       const message = {
         GroupName: this.GroupName,
         Status: statusCode,
@@ -64,7 +63,15 @@ export class ChatRoomComponent implements OnInit {
     }
   }
   // tslint:disable-next-line:typedef
+  availabilitySendIsType = true;
 
+  sendIsIyping(){
+    if(this.availabilitySendIsType){
+      this.sendMessage(5);
+      this.availabilitySendIsType=false
+      setTimeout(() => {this.availabilitySendIsType=true}, 3000);
+    }
+  }
   public disconect() {
     swal.fire({
       title: 'قطع مکالمه',
@@ -85,8 +92,6 @@ export class ChatRoomComponent implements OnInit {
         }, 5000);
       }
     })
-
-
   }
 
   public reloadpage() {
@@ -133,6 +138,7 @@ export class ChatRoomComponent implements OnInit {
       else if (data.status === 5) {
         this.isTypeing = true
         setTimeout(() => { this.isTypeing = false }, 3000);
+        console.log('aaa')
       }
       else if (data.status === 6) {
         this.reloadpage()

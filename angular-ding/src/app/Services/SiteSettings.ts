@@ -4,20 +4,8 @@ import swal from 'sweetalert2';
 export class item implements interfaces.ISettings{
     public constructor(){
 
-
-        var UsabilityNotification=localStorage.getItem("UsabilityNotification")
-        if (UsabilityNotification == null) {
-            this.UsabilityNotification=true;
-        }else {
-            this.UsabilityNotification = UsabilityNotification=="true";
-        }
-
-        var UsabilitySounds=localStorage.getItem("UsabilitySounds")
-        if (UsabilitySounds == null) {
-            this.UsabilitySounds=true;
-        }else {
-            this.UsabilitySounds = UsabilitySounds=="true";
-        }
+        this.UsabilityNotification= localStorage.getItem("UsabilityNotification")!= "false"
+        this.UsabilitySounds= localStorage.getItem("UsabilitySounds")!= "false"
     }
     UsabilityNotification: boolean;
     UsabilitySounds: boolean;
