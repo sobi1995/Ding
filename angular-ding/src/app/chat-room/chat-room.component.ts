@@ -174,7 +174,6 @@ export class ChatRoomComponent implements OnInit {
   }
 
   notify(body) { //our function to be called on click
-    console.log(this.Settings.UsabilityNotification)
     if(this.Settings.UsabilityNotification){
     let options = { //set options
       body: body,
