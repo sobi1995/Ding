@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as Settings  from '../Services/ISiteSettings';
-import * as model  from '../Services/SiteSettings';
+import * as Settings  from '../Services/SettingService/ISiteSettings';
+import * as model  from '../Services/SettingService/SiteSettings';
 import { Router } from '@angular/router';
 import { settings } from 'cluster';
 

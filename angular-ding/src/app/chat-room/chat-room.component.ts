@@ -4,6 +4,11 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ResizedEvent } from 'angular-resize-event';
 import { PushNotificationsService } from 'ng-push-ivy';
 import swal from 'sweetalert2';
+import * as Sounds  from '../Services/SoundService/ISoundsService';
+import * as SoundModel  from '../Services/SoundService/SoundsService';
+import * as Settings  from '../Services/SettingService/ISiteSettings';
+import * as Settingmodel  from '../Services/SettingService/SiteSettings';
+
 
 @Component({
   selector: 'app-chat-room',
@@ -40,9 +45,12 @@ export class ChatRoomComponent implements OnInit {
     window.onpopstate = function () {
         history.go(1);
     };
-
+    this.Sounds=new SoundModel.item()
+    this.Settings=new Settingmodel.item()
   }
-  // tslint:disable-next-line:typedef
+  public Sounds:Sounds.ISoundService;
+  public Settings:Settings.ISettings;
+// tslint:disable-next-line:typedef
   ngOnInit() {
     this.StartSocket();
   }
@@ -122,13 +130,11 @@ export class ChatRoomComponent implements OnInit {
       .withUrl('https://siteinjast.ir/chathub')
       .build();
 
-    this._hubConnection.on('ReceiveMessage', (data: any) => {
+      this._hubConnection.on('ReceiveMessage', (data: any) => {
       if (data.status === 4) {
         this.ShowLoader = false;
         this.GroupName = data.groupName;
-        var audio = new Audio('../assets/Song/Ding1.mp3');
-        audio.play();
-      }
+        this.Sounds.PlayDing1()      }
       else if (data.status === 1) {
         const received = `Received: ${data}`;
         this.messages.push({ message: data.message, type: false, time:data.persianDate });
@@ -146,11 +152,9 @@ export class ChatRoomComponent implements OnInit {
       } else if (data.status === 7) {
         this.CountOnlineUsers = data.msg
       } else if (data.status === 8) {
-        var audio = new Audio('../assets/Song/Ding1.mp3');
-        audio.play();
+        this.Sounds.PlayDing2()   
       }
     });
-
     this._hubConnection
       .start()
       .then(() => {
@@ -170,6 +174,8 @@ export class ChatRoomComponent implements OnInit {
   }
 
   notify(body) { //our function to be called on click
+    console.log(this.Settings.UsabilityNotification)
+    if(this.Settings.UsabilityNotification){
     let options = { //set options
       body: body,
       icon: "./assets/favicon.png" //adding an icon
@@ -178,6 +184,7 @@ export class ChatRoomComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
     );
+  }  
   }
   Back() {
     swal.fire({
