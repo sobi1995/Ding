@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 export class HelpComponent implements OnInit {
 
   constructor(private _router:Router) { 
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-        history.go(1);
-    };
+    // history.pushState(null, null, location.href);
+    // window.onpopstate = function () {
+    //     history.go(1);
+    // };
   }
   helpchecked=false
   ngOnInit(): void {

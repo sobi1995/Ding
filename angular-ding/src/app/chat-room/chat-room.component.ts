@@ -41,12 +41,8 @@ export class ChatRoomComponent implements OnInit {
         _self.IsPushNotifications = false;
     });
 
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-        history.go(1);
-    };
-    this.Sounds=new SoundModel.item()
-    this.Settings=new Settingmodel.item()
+  
+ 
   }
   public Sounds:Sounds.ISoundService;
   public Settings:Settings.ISettings;
