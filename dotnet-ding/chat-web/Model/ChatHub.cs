@@ -57,9 +57,14 @@ namespace chatweb.Model
         {
             if(message.Status==Status.Chating)
            this._logger. LogInformation(message.Message);
+            SedndMessageToAdmin(new Message() { GroupName=null,Msg=message.Message,Status=Status.Chating});
             return Clients.GroupExcept(message.GroupName, Context.ConnectionId).SendAsync("ReceiveMessage", message);
+         
         }
-
+        public Task SedndMessageToAdmin(Message message)
+        {    
+            return Clients.All.SendAsync("ReceiveMessageToAdmin", message);
+        }
 
         public Task SedndMessageGroup(string groupname, Message message)
         {
@@ -111,7 +116,8 @@ namespace chatweb.Model
             }
 
             FoundUserAndCreateChat();
-            SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
+            //SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
+            SedndMessageToAdmin(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
             return base.OnConnectedAsync();
         }
 
@@ -120,8 +126,8 @@ namespace chatweb.Model
         
             DeleteRoom(Context.ConnectionId, Users[Context.ConnectionId.ToString()].GroupName);  
             DeleteUser(Context.ConnectionId);
-            SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
-
+            //SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
+            SedndMessageToAdmin(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
             return base.OnDisconnectedAsync(exception);
         }
 
