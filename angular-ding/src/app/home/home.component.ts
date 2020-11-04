@@ -3,6 +3,7 @@ import { interval } from 'rxjs';
 import * as Settings  from '../Services/SettingService/ISiteSettings';
 import * as Settingmodel  from '../Services/SettingService/SiteSettings';
 
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,8 +18,12 @@ export class HomeComponent implements OnInit {
       var x = document.getElementsByClassName("mySlides");
       if (this.slideIndex > x.length) {this.slideIndex = 1}
       if (this.slideIndex < 1) {this.slideIndex = x.length}
-    }}, 3000);   
-    this.Setting=new Settingmodel.item()
+    }}, 3000);
+    // history.pushState(null, null, document.title);
+    // window.addEventListener('popstate', function () {
+    //     history.pushState(null, null, document.title);
+    // });
+    
   }
   public Setting:Settings.ISettings;
 
@@ -38,5 +43,25 @@ timerEnable=true
       this.timerEnable=true;
     }, 3000);    
   }
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event) {
  
+    swal.fire({
+      title: 'بازگشت  ',
+      text: "آیا مایل به بازگشت هستید",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'خیر',
+      confirmButtonText: 'بله'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        history.go(-(history.length - 1));
+      }
+    })
+
+
+  }
+
 }
