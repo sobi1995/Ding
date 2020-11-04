@@ -16,6 +16,15 @@
       <table class="table text-right table-striped">
         <tr>
           <td class="w-50">
+            <input type="text"  [(ngModel)]="Setting.PublicUsername"  class="form-control"/>        
+          </td>
+          <td class="w-50">
+            <label>نام کاربری </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="w-50">
             <input type="text" [checked]="Setting.UsabilityNotification" (change)="Setting.UsabilityNotification=!Setting.UsabilityNotification"  type="checkbox"  id="UsabilityNotification"/>        
           </td>
           <td class="w-50">

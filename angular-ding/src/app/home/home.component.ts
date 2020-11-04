@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
+import * as Settings  from '../Services/SettingService/ISiteSettings';
+import * as Settingmodel  from '../Services/SettingService/SiteSettings';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,10 @@ export class HomeComponent implements OnInit {
       if (this.slideIndex > x.length) {this.slideIndex = 1}
       if (this.slideIndex < 1) {this.slideIndex = x.length}
     }}, 3000);   
+    this.Setting=new Settingmodel.item()
   }
+  public Setting:Settings.ISettings;
+
   ngOnInit(): void {
   }
   slideIndex=1;

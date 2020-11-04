@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <nav class="nav" id="nav">
+      <div class="default-nav">
+        <div class="main-nav">
+          <table class="w-100 text-center table-navbar">
+              <tr>
+                <td class="td-left"><div class="toggle" (click)="Back()"></div></td>
+                <td class="td-main">پنل مدیریت</td>
+                <td class="td-right"></td>
+              </tr>
+            </table>  
+         </div> 
+      </div>
+    </nav>  
+  <div class="div-body">
+<div class="col-md-12">
+  <label>{{ CountOnlineUsers }} : تعداد کاربران آنلاین </label>
+</div>
+<div class="col-12">
+  <select size="15" class="form-control">
+    <option *ngFor="let msg of messages; let i = index"> {{msg.message}}</option>
+  </select>
+</div>
+  </div>
+</div>

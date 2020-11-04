@@ -45,6 +45,17 @@
   .box.hero span {
     font-size: 23px;
   }
+  .nav .default-nav .main-nav .AdminPanel {
+    height: 32px;
+    width: 32px;
+    background: url(/assets/ImgTools/search.png);
+    background-size: contain;
+    margin: 16px;
+    float: left;
+  }
+  .nav .default-nav .main-nav .AdminPanel:hover {
+    cursor: pointer;
+  }
 
   
   .span {

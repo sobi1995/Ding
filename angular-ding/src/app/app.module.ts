@@ -14,6 +14,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { HelpComponent } from './help/help.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 // import { HomeComponent } from './home/home.component';
  
  
@@ -26,7 +27,8 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     AboutUsComponent,
     HelpComponent,
     SettingsComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

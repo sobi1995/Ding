@@ -7,6 +7,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { HelpComponent } from './help/help.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
   {path:'WebPlatform',component:WebPlatformComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'help',component:HelpComponent},
   {path:'settings',component:SettingsComponent},
   {path:'comingsoon',component:ComingSoonComponent},
+  {path:'adminpanel',component:AdminPanelComponent},
 
 ];
 

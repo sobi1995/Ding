@@ -6,7 +6,9 @@
           <tr>
             <td class="td-left"></td>
             <td class="td-main">Ding</td>
-            <td class="td-right"></td>
+            <td class="td-right">
+              <div  [routerLink]="['adminpanel']" class="AdminPanel" *ngIf="(Setting.PublicUsername=='Saman.Admin' || Setting.PublicUsername=='Sobhan.Admin')" ></div>
+            </td>
           </tr>
         </table>    
       </div>
