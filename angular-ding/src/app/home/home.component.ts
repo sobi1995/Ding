@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
       if (this.slideIndex > x.length) {this.slideIndex = 1}
       if (this.slideIndex < 1) {this.slideIndex = x.length}
     }}, 3000);
+    this.Setting=new Settingmodel.item()
     // history.pushState(null, null, document.title);
     // window.addEventListener('popstate', function () {
     //     history.pushState(null, null, document.title);
