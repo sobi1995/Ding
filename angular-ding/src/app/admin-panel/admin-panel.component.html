@@ -16,10 +16,10 @@
 <div class="col-md-12">
   <label>{{ CountOnlineUsers }} : تعداد کاربران آنلاین </label>
 </div>
-<div class="col-12">
-  <select size="15" class="form-control">
-    <option *ngFor="let msg of messages; let i = index"> {{msg.message}}</option>
-  </select>
+<div class="col-12 div-list table-bordered">
+  <ul class="ul-list">
+        <li *ngFor="let msg of messages; let i = index"> {{msg.message}}</li>
+  </ul>
 </div>
   </div>
 </div>
