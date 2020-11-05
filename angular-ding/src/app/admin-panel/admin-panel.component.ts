@@ -19,7 +19,7 @@ export class AdminPanelComponent implements OnInit {
   }
   StartSocket() {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl('https://siteinjast.ir/chathub')
+      .withUrl('https://siteinjast.ir/chathub?Roule=1')
       .build();
 
       this._hubConnection.on('ReceiveMessageToAdmin', (data: any) => {

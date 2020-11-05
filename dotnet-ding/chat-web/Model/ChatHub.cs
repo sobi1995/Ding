@@ -100,9 +100,15 @@ namespace chatweb.Model
 
         public override Task OnConnectedAsync()
         {
-
+            var httpContext = Context.GetHttpContext();
             var connectionId = Context.ConnectionId;
+            var roule = httpContext.Request.Query["Roule"];
+             var UserAgent = httpContext.Request.Headers["User-Agent"].FirstOrDefault().ToString();
+            if (roule.Count <= 0)
+            {
 
+           
+             
             var user = Users.GetOrAdd(connectionId,
                 _ => new UserSocket
                 {
@@ -118,6 +124,7 @@ namespace chatweb.Model
             FoundUserAndCreateChat();
             //SendMessageAllUser(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
             SedndMessageToAdmin(new Message() { Msg = Users.Count.ToString(), Status = Status.OnlineUser });
+            }
             return base.OnConnectedAsync();
         }
 
