@@ -4,10 +4,10 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ResizedEvent } from 'angular-resize-event';
 import { PushNotificationsService } from 'ng-push-ivy';
 import swal from 'sweetalert2';
-import * as Sounds  from '../Services/SoundService/ISoundsService';
-import * as SoundModel  from '../Services/SoundService/SoundsService';
-import * as Settings  from '../Services/SettingService/ISiteSettings';
-import * as Settingmodel  from '../Services/SettingService/SiteSettings';
+import * as Sounds from '../Services/SoundService/ISoundsService';
+import * as SoundModel from '../Services/SoundService/SoundsService';
+import * as Settings from '../Services/SettingService/ISiteSettings';
+import * as Settingmodel from '../Services/SettingService/SiteSettings';
 
 
 @Component({
@@ -41,14 +41,20 @@ export class ChatRoomComponent implements OnInit {
         _self.IsPushNotifications = false;
     });
 
-  
- 
+
+
   }
-  public Sounds:Sounds.ISoundService;
-  public Settings:Settings.ISettings;
-// tslint:disable-next-line:typedef
+  public Sounds: Sounds.ISoundService;
+  public Settings: Settings.ISettings;
+  // tslint:disable-next-line:typedef
   ngOnInit() {
     this.StartSocket();
+    window.addEventListener("keyup", disableF5);
+    window.addEventListener("keydown", disableF5);
+  
+   function disableF5(e) {
+      if ((e.which || e.keyCode) == 116) e.preventDefault(); 
+   };
   }
 
   public sendMessage(statusCode: number): void {
@@ -69,11 +75,11 @@ export class ChatRoomComponent implements OnInit {
   // tslint:disable-next-line:typedef
   availabilitySendIsType = true;
 
-  sendIsIyping(){
-    if(this.availabilitySendIsType){
+  sendIsIyping() {
+    if (this.availabilitySendIsType) {
       this.sendMessage(5);
-      this.availabilitySendIsType=false
-      setTimeout(() => {this.availabilitySendIsType=true}, 3000);
+      this.availabilitySendIsType = false
+      setTimeout(() => { this.availabilitySendIsType = true }, 3000);
     }
   }
   public disconect() {
@@ -116,8 +122,8 @@ export class ChatRoomComponent implements OnInit {
     this.StartSocket();
   }
   public AddMessageToList(msg, type) {
-  var now = new Date();
-  this.messages.push({ message: msg, type: type,time:this.getTime(now) });
+    var now = new Date();
+    this.messages.push({ message: msg, type: type, time: this.getTime(now) });
   }
 
   // tslint:disable-next-line:typedef
@@ -126,14 +132,15 @@ export class ChatRoomComponent implements OnInit {
       .withUrl('https://siteinjast.ir/chathub')
       .build();
 
-      this._hubConnection.on('ReceiveMessage', (data: any) => {
+    this._hubConnection.on('ReceiveMessage', (data: any) => {
       if (data.status === 4) {
         this.ShowLoader = false;
         this.GroupName = data.groupName;
-        this.Sounds.PlayDing1()      }
+        this.Sounds.PlayDing1()
+      }
       else if (data.status === 1) {
         const received = `Received: ${data}`;
-        this.messages.push({ message: data.message, type: false, time:data.persianDate });
+        this.messages.push({ message: data.message, type: false, time: data.persianDate });
         if (this.IsPushNotifications == true)
           this.notify(data.message)
       }
@@ -148,7 +155,7 @@ export class ChatRoomComponent implements OnInit {
       } else if (data.status === 7) {
         this.CountOnlineUsers = data.msg
       } else if (data.status === 8) {
-        this.Sounds.PlayDing2()   
+        this.Sounds.PlayDing2()
       }
     });
     this._hubConnection
@@ -170,16 +177,16 @@ export class ChatRoomComponent implements OnInit {
   }
 
   notify(body) { //our function to be called on click
-    if(this.Settings.UsabilityNotification){
-    let options = { //set options
-      body: body,
-      icon: "./assets/favicon.png" //adding an icon
+    if (this.Settings.UsabilityNotification) {
+      let options = { //set options
+        body: body,
+        icon: "./assets/favicon.png" //adding an icon
+      }
+      this._pushNotifications.create('Iron Man', options).subscribe( //creates a notification
+        res => console.log(res),
+        err => console.log(err)
+      );
     }
-    this._pushNotifications.create('Iron Man', options).subscribe( //creates a notification
-      res => console.log(res),
-      err => console.log(err)
-    );
-  }  
   }
   Back() {
     swal.fire({
@@ -203,21 +210,21 @@ export class ChatRoomComponent implements OnInit {
   @HostListener('window:popstate', ['$event'])
   onPopState(event) {
     this.Back();
-   
+
   }
 
 
-getTime(datetime){
+  getTime(datetime) {
     var strDateTime = [
-        [[this.AddZero(datetime.getHours()), 
-          this.AddZero(datetime.getMinutes())].join(":"),
-          this.AddZero(datetime.getSeconds())] .join(":"),
-          datetime.getHours() >= 12 ? "PM" : "AM"].join(" ");
-        return strDateTime;
-}
-AddZero(num) {
-  return (num >= 0 && num < 10) ? "0" + num : num + "";
-}
+      [[this.AddZero(datetime.getHours()),
+      this.AddZero(datetime.getMinutes())].join(":"),
+      this.AddZero(datetime.getSeconds())].join(":"),
+      datetime.getHours() >= 12 ? "PM" : "AM"].join(" ");
+    return strDateTime;
+  }
+  AddZero(num) {
+    return (num >= 0 && num < 10) ? "0" + num : num + "";
+  }
 
 
 }
