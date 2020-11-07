@@ -17,7 +17,8 @@
 .back11 { background: -webkit-linear-gradient(-61deg, rgb(130, 255, 255), rgb(179, 17, 255)) }
 
 .box {
-  height: 116px;
+  height: 135px;
+  /* height: 116px; */
   position: relative;
   width: 50%;
   float: left;
@@ -28,7 +29,9 @@
     float: right;
   }
   .box.tall {
-    height: 232px;
+    height: 270px;
+    /* height: 232px; */
+
   }
   .box.wide {
     width: 100%;
