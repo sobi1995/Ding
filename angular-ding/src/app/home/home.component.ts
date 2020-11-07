@@ -74,7 +74,11 @@ export class HomeComponent implements OnInit {
       confirmButtonText: "باشه",
     }).then((result) => {
       if (result.isConfirmed) {
+        window.location.reload();
+        location.reload();
+        
         window.close();
+        history.go(-(history.length - 1));
       }
     })
 
