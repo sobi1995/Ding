@@ -64,15 +64,14 @@ export class HomeComponent implements OnInit {
     swal.fire({
       title: 'خروج!',
       text: 'برای خرج کافیست از دکمه home  گوشی را بزنید',
-      imageUrl: 'https://uupload.ir/files/7wwu_photo_2020-11-06_22-51-32.jpg',
+      imageUrl: 'https://siteinjast.ir/files/Home-Help.png',
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: 'Custom image',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      cancelButtonText: 'خیر',
-      confirmButtonText: 'بله'
+      confirmButtonText: "باشه",
     }).then((result) => {
       if (result.isConfirmed) {
         window.close();
