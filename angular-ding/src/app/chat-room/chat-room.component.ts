@@ -8,6 +8,7 @@ import * as Sounds from '../Services/SoundService/ISoundsService';
 import * as SoundModel from '../Services/SoundService/SoundsService';
 import * as Settings from '../Services/SettingService/ISiteSettings';
 import * as Settingmodel from '../Services/SettingService/SiteSettings';
+import { LocationStrategy } from '@angular/common';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class ChatRoomComponent implements OnInit {
   isTypeing = false;
   CountOnlineUsers = 0;
   constructor(
+    private location: LocationStrategy,
     private _pushNotifications: PushNotificationsService,
     private _router: Router) {
     var _self = this;
@@ -40,9 +42,17 @@ export class ChatRoomComponent implements OnInit {
       else
         _self.IsPushNotifications = false;
     });
+    this.disableBack();
 
 
+  }
 
+  disableBack() {
+    // preventing back button in browser implemented by "Samba Siva"  
+    history.pushState(null, null, window.location.href);
+    this.location.onPopState(() => {
+      history.pushState(null, null, window.location.href);
+    });
   }
   public Sounds: Sounds.ISoundService;
   public Settings: Settings.ISettings;
@@ -51,10 +61,10 @@ export class ChatRoomComponent implements OnInit {
     this.StartSocket();
     window.addEventListener("keyup", disableF5);
     window.addEventListener("keydown", disableF5);
-  
-   function disableF5(e) {
-      if ((e.which || e.keyCode) == 116) e.preventDefault(); 
-   };
+
+    function disableF5(e) {
+      if ((e.which || e.keyCode) == 116) e.preventDefault();
+    };
   }
 
   public sendMessage(statusCode: number): void {
