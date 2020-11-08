@@ -63,25 +63,16 @@ export class HomeComponent implements OnInit {
     // })
     swal.fire({
       title: 'خروج!',
-      text: 'برای خرج کافیست از دکمه home  گوشی را بزنید',
+      text: `برای خرج کافیست دکمه 
+      Home
+       گوشی را بزنید`,
       imageUrl: 'https://siteinjast.ir/files/Home-Help.png',
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: 'Custom image',
-      showCancelButton: true,
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
       confirmButtonText: "باشه",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.reload();
-        location.reload();
-        
-        window.close();
-        history.go(-(history.length - 1));
-      }
     })
-
   }
   disableBack() {
     // preventing back button in browser implemented by "Samba Siva"  
