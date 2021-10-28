@@ -1,0 +1,132 @@
+{
+  "configVersion": 1,
+  "timestamp": 1635430530078,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/index.html",
+        "/main.25985ccf5bdad6d1da73.js",
+        "/main.67ee966cf417a396f182.js",
+        "/manifest.webmanifest",
+        "/ngsw-worker.js",
+        "/polyfills.a4021de53358bb0fec14.js",
+        "/runtime.e227d1a0e31cbccbf8ec.js",
+        "/safety-worker.js",
+        "/styles.0f3cbb5113712b311bc8.css",
+        "/worker-basic.min.js"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/IRANSansWeb(FaNum).d402f064a654da21814c.woff",
+        "/assets/Fonts/IRANSansWeb(FaNum).woff",
+        "/assets/ImgTools/About_Us_Icon.png",
+        "/assets/ImgTools/Call.gif",
+        "/assets/ImgTools/Group_Chat_Icon.png",
+        "/assets/ImgTools/Help_Icon.png",
+        "/assets/ImgTools/Login_Icon.png",
+        "/assets/ImgTools/Next.png",
+        "/assets/ImgTools/Secret_Chat_Icon.png",
+        "/assets/ImgTools/emoji.png",
+        "/assets/ImgTools/ic_arrow_back_white_48dp.png",
+        "/assets/ImgTools/ic_send_white_48dp.png",
+        "/assets/ImgTools/search.png",
+        "/assets/ImgTools/setting_Icon.png",
+        "/assets/ProfilePicture/MyDefultProfilePicture.png",
+        "/assets/ProfilePicture/SercretProfilePictuer.png",
+        "/assets/Song/Ding1.mp3",
+        "/assets/Song/Ding2.mp3",
+        "/assets/Song/funny_sneezing.mp3",
+        "/assets/Styles/bootstrap.min.css",
+        "/assets/Wallpaper/FirstWallpaper.jpg",
+        "/assets/favicon.png",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/loader.gif"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/IRANSansWeb(FaNum).d402f064a654da21814c.woff": "cb95ee067a555fca5672f3038a015cac639a84e6",
+    "/assets/Fonts/IRANSansWeb(FaNum).woff": "cb95ee067a555fca5672f3038a015cac639a84e6",
+    "/assets/ImgTools/About_Us_Icon.png": "17866b99b87966de63408f64522917a9f710eb2f",
+    "/assets/ImgTools/Call.gif": "8bede2afbb94cdc4cc57c19db155de6ccbf947aa",
+    "/assets/ImgTools/Group_Chat_Icon.png": "54806aec64a04bee4c039d7b6ff1a7752b826d32",
+    "/assets/ImgTools/Help_Icon.png": "a1e73dbdb9d6e6186440076126232626454ac753",
+    "/assets/ImgTools/Login_Icon.png": "01732826aa5c0f59b6926b0e9c2e2f21ec39326d",
+    "/assets/ImgTools/Next.png": "1d0fe3be8602eaef1598fcde7f211d746da7ef03",
+    "/assets/ImgTools/Secret_Chat_Icon.png": "956fc8e9ed4eb4df903058265c83cd01f08c46be",
+    "/assets/ImgTools/emoji.png": "fc449d8144d8c5d13911260290a4175a150e1668",
+    "/assets/ImgTools/ic_arrow_back_white_48dp.png": "12af8b7cc56d2f1f45afe48eb4cc17f3d2b62cb6",
+    "/assets/ImgTools/ic_send_white_48dp.png": "f2700e593058c73f2a9664dbf7adb102ac5beb09",
+    "/assets/ImgTools/search.png": "a92efd163ac771757f3d6a9102aed1c97cfcfa33",
+    "/assets/ImgTools/setting_Icon.png": "0608afbc8823da4b76157c7f0e4b3c919807a9a0",
+    "/assets/ProfilePicture/MyDefultProfilePicture.png": "39c11ce658507708d374763bad57db988dc12fec",
+    "/assets/ProfilePicture/SercretProfilePictuer.png": "e7c782cfc4f16d9e272851967397500ae5a96bc2",
+    "/assets/Song/Ding1.mp3": "069ed91a82adcb90ba45e8cdcae4534e6a6cc371",
+    "/assets/Song/Ding2.mp3": "83c92b3cd3d04db749fcc917c3ed81462cd8accb",
+    "/assets/Song/funny_sneezing.mp3": "3e7efef8c3a6136201b743f13dfb0860eabe5d3d",
+    "/assets/Styles/bootstrap.min.css": "959952e7620d8543b08b245c790cfa05859f29bf",
+    "/assets/Wallpaper/FirstWallpaper.jpg": "1e1363bff0913a790fe48733c1e516437bf7cd53",
+    "/assets/favicon.png": "3b29a7f76bc122848a304f8781b88d7057b00ffa",
+    "/assets/icons/icon-128x128.png": "962b4de5cfcbced77e846801dac2118e7e714553",
+    "/assets/icons/icon-144x144.png": "e2226b67e3f52ade004d51e1ecafffc1f887dfd8",
+    "/assets/icons/icon-152x152.png": "981bd2b3deece3086fc84a0fb7fed7ff357090d7",
+    "/assets/icons/icon-192x192.png": "e463071018e085cd431112021c8c6dc95df91257",
+    "/assets/icons/icon-384x384.png": "505ead9cd4ef16233bfcba54823db2718295569f",
+    "/assets/icons/icon-512x512.png": "28f50d4f92a1b400e423035a34fe9dd8ec7ed728",
+    "/assets/icons/icon-72x72.png": "933e0c12f58524557da6d6400049a42634eb137a",
+    "/assets/icons/icon-96x96.png": "cf192741b995a7fbb073cc92df9493d51dd0dcf2",
+    "/assets/loader.gif": "22e3fdbe7e0184e37266b2a69aeecf1b24fa7009",
+    "/index.html": "bd725b0679a0cb2773cc0410bd957e966b26258e",
+    "/main.25985ccf5bdad6d1da73.js": "64510da15cf07b89b15c4f04d2253372e0e5ae8b",
+    "/main.67ee966cf417a396f182.js": "a9c38cd0c0cc5efebfabc4a0b960ab799d6fe86e",
+    "/manifest.webmanifest": "19c66d475079c04161e3cbde97de3bb1c6ea691b",
+    "/ngsw-worker.js": "601253069e8f1d4f717e0bd54332587669d68261",
+    "/polyfills.a4021de53358bb0fec14.js": "b47435a9ef2a4829f2f9dfd35599bde3614981b1",
+    "/runtime.e227d1a0e31cbccbf8ec.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/safety-worker.js": "f532926317210be6e2679d21748dc44a35389807",
+    "/styles.0f3cbb5113712b311bc8.css": "2ed4cfdbc7a6141963a356e4596009f5b0d27c76",
+    "/worker-basic.min.js": "f532926317210be6e2679d21748dc44a35389807"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
