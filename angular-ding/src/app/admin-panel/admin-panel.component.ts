@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
-
+import { environment } from 'src/environments/environment'
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
@@ -19,7 +19,7 @@ export class AdminPanelComponent implements OnInit {
   }
   StartSocket() {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl('https://siteinjast.ir/chathub?Roule=1')
+      .withUrl(`${environment.api}chathub?Roule=1`)
       .build();
 
       this._hubConnection.on('ReceiveMessageToAdmin', (data: any) => {

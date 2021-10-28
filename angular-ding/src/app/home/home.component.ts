@@ -5,13 +5,15 @@ import * as Settingmodel from '../Services/SettingService/SiteSettings';
 
 import swal from 'sweetalert2';
 import { LocationStrategy } from '@angular/common';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private location: LocationStrategy,) {
+    api:any =environment.api;
+  constructor(private location: LocationStrategy) {
     setInterval(() => {
       if (this.timerEnable) {
 
@@ -66,7 +68,7 @@ export class HomeComponent implements OnInit {
       text: `برای خرج کافیست دکمه 
       Home
        گوشی را بزنید`,
-      imageUrl: 'https://siteinjast.ir/files/Home-Help.png',
+      imageUrl: `${environment.api}files/Home-Help.png`,
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: 'Custom image',

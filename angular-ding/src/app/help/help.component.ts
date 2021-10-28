@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-help',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./help.component.css']
 })
 export class HelpComponent implements OnInit {
-
+  api : any =environment.api;
   constructor(private _router:Router) { 
     // history.pushState(null, null, location.href);
     // window.onpopstate = function () {

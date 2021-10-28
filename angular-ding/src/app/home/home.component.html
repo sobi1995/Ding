@@ -16,10 +16,10 @@
   </nav>
   <div class="page">
         <div class="box hero back11">
-        <img [ngStyle]="{'opacity':slideIndex==1 ? 1 : 0 }" class="mySlides" src="https://siteinjast.ir/files/1.jpg">
-        <img [ngStyle]="{'opacity':slideIndex==2 ? 1 : 0 }" class="mySlides" src="https://siteinjast.ir/files/2.jpg">
-        <img [ngStyle]="{'opacity':slideIndex==3 ? 1 : 0 }" class="mySlides" src="https://siteinjast.ir/files/5.jpg" >
-        <img [ngStyle]="{'opacity':slideIndex==4 ? 1 : 0 }" class="mySlides" src="https://siteinjast.ir/files/4.jpg" >
+        <img [ngStyle]="{'opacity':slideIndex==1 ? 1 : 0 }" class="mySlides" src="{{api}}files/1.jpg">
+        <img [ngStyle]="{'opacity':slideIndex==2 ? 1 : 0 }" class="mySlides" src="{{api}}files/2.jpg">
+        <img [ngStyle]="{'opacity':slideIndex==3 ? 1 : 0 }" class="mySlides" src="{{api}}files/5.jpg" >
+        <img [ngStyle]="{'opacity':slideIndex==4 ? 1 : 0 }" class="mySlides" src="{{api}}files/4.jpg" >
         <button class="btn-back"  (click)="slider(1)"><</button>  
         <button  class="btn-next" (click)="slider(-1)">></button>  
         <span class="span"> Ding </span>

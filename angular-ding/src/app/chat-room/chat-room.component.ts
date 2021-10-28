@@ -9,6 +9,7 @@ import * as SoundModel from '../Services/SoundService/SoundsService';
 import * as Settings from '../Services/SettingService/ISiteSettings';
 import * as Settingmodel from '../Services/SettingService/SiteSettings';
 import { LocationStrategy } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -139,7 +140,7 @@ export class ChatRoomComponent implements OnInit {
   // tslint:disable-next-line:typedef
   StartSocket() {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl('https://siteinjast.ir/chathub')
+      .withUrl(`${environment.api}chathub`)
       .build();
 
     this._hubConnection.on('ReceiveMessage', (data: any) => {
