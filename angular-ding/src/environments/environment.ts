@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://localhost:44300/'
+  api: 'https://diingo.ir/'
 };
 
 /*
