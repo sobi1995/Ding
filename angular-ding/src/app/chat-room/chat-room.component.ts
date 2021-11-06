@@ -55,8 +55,8 @@ export class ChatRoomComponent implements OnInit {
       history.pushState(null, null, window.location.href);
     });
   }
-  public Sounds: Sounds.ISoundService;
-  public Settings: Settings.ISettings;
+  // public Sounds: Sounds.ISoundService;
+  // public Settings: Settings.ISettings;
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.StartSocket();
@@ -139,15 +139,17 @@ export class ChatRoomComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   StartSocket() {
+     
     this._hubConnection = new HubConnectionBuilder()
       .withUrl(`${environment.api}chathub`)
       .build();
 
     this._hubConnection.on('ReceiveMessage', (data: any) => {
+      debugger
       if (data.status === 4) {
         this.ShowLoader = false;
         this.GroupName = data.groupName;
-        this.Sounds.PlayDing1()
+        // this.Sounds.PlayDing1()
       }
       else if (data.status === 1) {
         const received = `Received: ${data}`;
@@ -158,7 +160,7 @@ export class ChatRoomComponent implements OnInit {
       else if (data.status === 5) {
         this.isTypeing = true
         setTimeout(() => { this.isTypeing = false }, 3000);
-        console.log('aaa')
+    
       }
       else if (data.status === 6) {
         this.reloadpage()
@@ -166,7 +168,7 @@ export class ChatRoomComponent implements OnInit {
       } else if (data.status === 7) {
         this.CountOnlineUsers = data.msg
       } else if (data.status === 8) {
-        this.Sounds.PlayDing2()
+        // this.Sounds.PlayDing2()
       }
     });
     this._hubConnection
@@ -175,7 +177,8 @@ export class ChatRoomComponent implements OnInit {
         console.log('Hub connection started');
       })
       .catch((err) => {
-        console.log('Error while establishing connection');
+        debugger
+        console.log('Error while establishing connection',err);
       });
   }
   public scrollToBottom() {
@@ -188,16 +191,16 @@ export class ChatRoomComponent implements OnInit {
   }
 
   notify(body) { //our function to be called on click
-    if (this.Settings.UsabilityNotification) {
-      let options = { //set options
-        body: body,
-        icon: "./assets/favicon.png" //adding an icon
-      }
-      this._pushNotifications.create('Iron Man', options).subscribe( //creates a notification
-        res => console.log(res),
-        err => console.log(err)
-      );
-    }
+    // if (this.Settings.UsabilityNotification) {
+    //   let options = { //set options
+    //     body: body,
+    //     icon: "./assets/favicon.png" //adding an icon
+    //   }
+    //   this._pushNotifications.create('Iron Man', options).subscribe( //creates a notification
+    //     res => console.log(res),
+    //     err => console.log(err)
+    //   );
+    // }
   }
   Back() {
     swal.fire({

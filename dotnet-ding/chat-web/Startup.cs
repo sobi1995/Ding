@@ -34,7 +34,7 @@ namespace WebApplication1
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder => builder
-                .WithOrigins("http://localhost:4200")
+                .WithOrigins("https://diingo.ir")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());

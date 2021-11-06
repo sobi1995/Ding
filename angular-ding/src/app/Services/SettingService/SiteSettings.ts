@@ -9,8 +9,8 @@ export class item implements interfaces.ISettings{
         this.PublicUsername= String(localStorage.getItem("PublicUsername"))
     }
     PublicUsername: string;
-    UsabilityNotification: boolean;
-    UsabilitySounds: boolean;
+    UsabilityNotification: boolean=true;
+    UsabilitySounds: boolean=true;
     
     SaveChange() {
         localStorage.setItem("UsabilityNotification",String(this.UsabilityNotification));
